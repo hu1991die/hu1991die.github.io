@@ -79,7 +79,7 @@
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -198,11 +198,100 @@
 
       <div class="body-wrap">
   
+    <article id="post-my-first-post" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/07/my-first-post/" class="article-date">
+  	<time datetime="2016-03-07T07:57:07.139Z" itemprop="datePublished">2016-03-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="使用Hexo-GitHub-Pages搭建个人博客"><a href="#使用Hexo-GitHub-Pages搭建个人博客" class="headerlink" title="使用Hexo+GitHub Pages搭建个人博客"></a>使用Hexo+GitHub Pages搭建个人博客</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="什么-是hexo"><a href="#什么-是hexo" class="headerlink" title="什么 是hexo"></a>什么 是hexo</h3><p>hexo是一个基于Node.js的静态博客程序，可以方便的生成静态网页托管在github和Heroku上。作者是来自台湾的@tommy351。引用@tommy351的话，hexo：</p>
+<blockquote>
+<p>快速、简单且功能强大的 Node.js 博客框架。<br>A fast, simple &amp; powerful blog framework, powered by Node.js.</p>
+</blockquote>
+<p>类似于jekyll、Octopress、Wordpress，我们可以用hexo创建自己的博客，托管到github或Heroku上，绑定自己的域名，用markdown写文章。本博客即使用hexo创建并托管在github上。先前在csdn上写过博客，虽然也是用的markdown语法（这里说明一下，markdown语法写博客真的很给力），后来一直想搭建一个真正属于自己的博客，网上搜了下wordpress,大致了解了一下，感觉挺麻烦的，后来又了解到了jekyll,也感觉挺繁琐，再到后来，了解到hexo，听说是jekyll的升级版，很方便。于是就花了几天时间研究了一下，确实很不错，效果也很赞！！！好了，说着说着就跑偏了，现在开始进入正题。</p>
+<h2 id="安装和配置"><a href="#安装和配置" class="headerlink" title="安装和配置"></a>安装和配置</h2><h3 id="安装git（必须）"><a href="#安装git（必须）" class="headerlink" title="安装git（必须）"></a>安装git（必须）</h3><p>作用：用来把本地的hexo内容，比如写的文章提交到github仓库里面进行管理</p>
+<p>安装：下载<a href="http://code.google.com/p/msysgit/" title="http://code.google.com/p/msysgit/" target="_blank" rel="external">http://code.google.com/p/msysgit/</a>并执行即可完成安装。如果用的是mac，安装XCode就自带会有git，这一块可以去网上搜一下，很多教程，也比较简单。</p>
+<h3 id="安装Node-js（必须）"><a href="#安装Node-js（必须）" class="headerlink" title="安装Node.js（必须）"></a>安装Node.js（必须）</h3><p>作用：主要用来生成静态页面的<br>安装：到Node.js官网<a href="https://nodejs.org/en/" title="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a>下载相应平台的最新版本，一路安装即可。</p>
+<h3 id="申请Github账号（必须）"><a href="#申请Github账号（必须）" class="headerlink" title="申请Github账号（必须）"></a>申请Github账号（必须）</h3><p>作用：是用来做博客的远程仓库、域名、服务器之类的。github仓库可以用来管理文章，如果自己没有域名的话（可以注册一个属于自己的域名），则可以使用github提供的免费域名，并且GithubPages默认会有300M的免费空间可供使用，资料自己管理，保存可靠，最主要的是稳定便利。所以将博客托管到github上进行管理再合适不过了。</p>
+<h3 id="正式安装Hexo"><a href="#正式安装Hexo" class="headerlink" title="正式安装Hexo"></a>正式安装Hexo</h3><p>我们安装好git和Node.js之后，可以执行一下npm命令来安装hexo（注：Windows系统下可以在任意空白位置处鼠标右击，调出Git Bash命令窗口，Mac系统则直接打开终端Terminal即可）：</p>
+<pre><code>$sudo npm install -g hexo
+</code></pre><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>然后，执行init命令初始化hexo到你指定的目录（比如：D:/hexo）,执行以下指令(在D:\hexo内空白处点击鼠标右键，选择Git bash)，hexo init即会自动在目标文件夹建立网站所需要的所有文件。或者：</p>
+<pre><code>$ sudo hexo init &lt;folder&gt; &amp;&amp; cd &lt;folder&gt;
+</code></pre><h3 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h3><pre><code>$sudo npm install
+</code></pre><p>好了，至此，全部的安装工作已经完成了！！</p>
+<h3 id="生成静态页面"><a href="#生成静态页面" class="headerlink" title="生成静态页面"></a>生成静态页面</h3><p>首先，任意空白处右击调出git bash，cd到你的init目录（如：H:/dexo目录），执行如下命令，生成静态页面至hexo/public/目录中。</p>
+<pre><code>hexo generate (可简写 hexo g)
+</code></pre><h3 id="本地启动"><a href="#本地启动" class="headerlink" title="本地启动"></a>本地启动</h3><p>启动本地服务，进行文章预览，命查看令：</p>
+<pre><code>hexo server （可简写hexo s）
+</code></pre><p>然后再打开浏览器，在地址栏中输入<a href="http://localhost:4000" title="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>进行预览</p>
+<p>这里可能需要注意一下，有的伙伴可能输入这个地址之后啥也看不到，有可能是因为4000这个端口被某些服务给占用了，我当时也遇到过这种情况，原因是与<em>福昕阅读器</em>冲突了，后来杀掉这个<em>福昕阅读器</em>的进程之后就可以了，当然我们也可以更改hexo的端口，命令如下：</p>
+<pre><code>hexo server -p 5000 （可简写hexo s -p 5000）
+</code></pre><p>然后到浏览器输入：<a href="http://localhost:5000" title="http://localhost:5000" target="_blank" rel="external">http://localhost:5000</a>再次预览查看。</p>
+<p>注：如果一切正常的话，大伙肯定是会看到久违的Hello World主界面的。</p>
+<p>ok，到这里，本地博客已经完全搭建起来了，但是，注意这里有个但是哦，这只是本地哦，现在的域名和服务器都是基于我们自己的电脑，其他的小伙伴是看不到你的这个Hello World主界面的。所以，我们需要部署到github上面去，与github进行关联。</p>
+<h2 id="关联GitHub"><a href="#关联GitHub" class="headerlink" title="关联GitHub"></a>关联GitHub</h2><h3 id="注册Github账号"><a href="#注册Github账号" class="headerlink" title="注册Github账号"></a>注册Github账号</h3><p>如果先前已有账号的可以直接跳过，还没有的，点击这里<a href="https://github.com/signup/free" title="https://github.com/signup/free" target="_blank" rel="external">https://github.com/signup/free</a>进行注册，注册流程很简单，和一般的账号注册没啥区别，这里就不赘述了。</p>
+<h3 id="创建repository仓库"><a href="#创建repository仓库" class="headerlink" title="创建repository仓库"></a>创建repository仓库</h3><p>在自己的<a href="https://github.com" title="https://github.com" target="_blank" rel="external">Github</a>主页右下角，创建一个新的repository仓库。<br><img src="http://i.imgur.com/wN5rfoE.png" alt="http://i.imgur.com/wN5rfoE.png"></p>
+<p>比如我的<a href="https://github.com" title="https://github.com" target="_blank" rel="external">Github</a>账号是<a href="https://github.com/hu1991die" title="hu1991die" target="_blank" rel="external">hu1991die</a>,那么我创建的repository名字应该是<code>hu1991die.github.io</code>。注意，这个地方的命名需要注意一下，GitHubPage的名字必须<strong>用户名.github.com</strong>或者<strong>用户名.github.io</strong>。否则就变成了一个普通的项目了。<br><img src="http://i.imgur.com/N4jqwkO.png" alt="http://i.imgur.com/N4jqwkO.png"></p>
+<h3 id="部署博客"><a href="#部署博客" class="headerlink" title="部署博客"></a>部署博客</h3><p>编辑<code>_config.xml</code>（这个是hexo的核心配置文件，位于你的本地hexo博客目录下面，如H:\hexo下），在部署的时候，需要把下面的hu1991die替换成自己的github账号。</p>
+<pre><code>deploy:
+      type: git
+      repository: git@github.com:hu1991die/hu1991die.github.io.git
+      branch: master
+</code></pre><p>网上关于这个地方的type配置有些争议，不过据说官方最新版本的hexo中，这里的type要写成git，而不是github。</p>
+<p>接下来，再执行下列命令即可完成github部署。</p>
+<pre><code>hexo clean（可简写hexo cl，清理）
+
+hexo generate（可简写hexo g）
+
+hexo deploy（可简写hexo d）
+</code></pre><p>不过我一般都是这样的：</p>
+<pre><code>hexo cl &amp;&amp; hexo g &amp;&amp; hexo d &amp;&amp; hexo cl
+</code></pre><p><strong>注意：</strong>有些新用户需要设置SSH，否则上述命令会失败。ssh 的介绍和设置方法请看<a href="https://help.github.com/articles/generating-an-ssh-key/" title="https://help.github.com/articles/generating-an-ssh-key/" target="_blank" rel="external">官方教程</a>，不用担心，很简单。就是将本地的SSH公钥添加到github上面，主要是做一个校验用。</p>
+<p><strong>记住：</strong>每次修改本地文件后，需要<code>hexo generate</code>才能保存。每次使用命令时，都要在<code>D:\hexo</code>目录下。</p>
+<p>反正每次使用这行命令就行了。</p>
+<pre><code>hexo cl &amp;&amp; hexo g &amp;&amp; hexo d &amp;&amp; hexo cl
+</code></pre><p>好了,到了这里。我们的博客已经完全搭建起来了，打开浏览器，在浏览器输入地址中hu1991die.github.io就能看到你的成就了！小伙伴们，赶快去体验一下吧！</p>
+<p>OK，下一篇将会给大伙儿介绍一下HEXO的目录结构以及一些常用命令，以及如何写文章和发表文章等等，敬请期待吧！！！</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/03/07/hello-world/" class="article-date">
-  	<time datetime="2016-03-07T07:49:16.822Z" itemprop="datePublished">2016-03-07</time>
+  	<time datetime="2016-03-07T07:57:07.132Z" itemprop="datePublished">2016-03-07</time>
 </a>
     </div>
   
@@ -233,104 +322,6 @@
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-my-first-post" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/07/my-first-post/" class="article-date">
-  	<time datetime="2016-03-07T07:49:16.800Z" itemprop="datePublished">2016-03-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#使用Hexo+GitHub Pages搭建个人博客</p>
-<p>##简介</p>
-<p>###什么是hexo<br>hexo是一个基于Node.js的静态博客程序，可以方便的生成静态网页托管在github和Heroku上。作者是来自台湾的@tommy351。引用@tommy351的话，hexo：</p>
-<blockquote>
-<p>快速、简单且功能强大的 Node.js 博客框架。<br>A fast, simple &amp; powerful blog framework, powered by Node.js.</p>
-</blockquote>
-<p>类似于jekyll、Octopress、Wordpress，我们可以用hexo创建自己的博客，托管到github或Heroku上，绑定自己的域名，用markdown写文章。本博客即使用hexo创建并托管在github上。先前在csdn上写过博客，虽然也是用的markdown语法（这里说明一下，markdown语法写博客真的很给力），后来一直想搭建一个真正属于自己的博客，网上搜了下wordpress,大致了解了一下，感觉挺麻烦的，后来又了解到了jekyll,也感觉挺繁琐，再到后来，了解到hexo，听说是jekyll的升级版，很方便。于是就花了几天时间研究了一下，确实很不错，效果也很赞！！！好了，说着说着就跑偏了，现在开始进入正题。</p>
-<p>##安装和配置</p>
-<p>###安装git（必须）<br>作用：用来把本地的hexo内容，比如写的文章提交到github仓库里面进行管理</p>
-<p>安装：下载<a href="http://code.google.com/p/msysgit/" title="http://code.google.com/p/msysgit/" target="_blank" rel="external">http://code.google.com/p/msysgit/</a>并执行即可完成安装。如果用的是mac，安装XCode就自带会有git，这一块可以去网上搜一下，很多教程，也比较简单。</p>
-<p>###安装Node.js（必须）<br>作用：主要用来生成静态页面的<br>安装：到Node.js官网<a href="https://nodejs.org/en/" title="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a>下载相应平台的最新版本，一路安装即可。</p>
-<p>###申请Github账号（必须）<br>作用：是用来做博客的远程仓库、域名、服务器之类的。github仓库可以用来管理文章，如果自己没有域名的话（可以注册一个属于自己的域名），则可以使用github提供的免费域名，并且GithubPages默认会有300M的免费空间可供使用，资料自己管理，保存可靠，最主要的是稳定便利。所以将博客托管到github上进行管理再合适不过了。</p>
-<p>###正式安装Hexo<br>我们安装好git和Node.js之后，可以执行一下npm命令来安装hexo（注：Windows系统下可以在任意空白位置处鼠标右击，调出Git Bash命令窗口，Mac系统则直接打开终端Terminal即可）：</p>
-<pre><code>$sudo npm install -g hexo
-</code></pre><p>###初始化<br>然后，执行init命令初始化hexo到你指定的目录（比如：D:/hexo）,执行以下指令(在D:\hexo内空白处点击鼠标右键，选择Git bash)，hexo init即会自动在目标文件夹建立网站所需要的所有文件。或者：</p>
-<pre><code>$ sudo hexo init &lt;folder&gt; &amp;&amp; cd &lt;folder&gt;
-</code></pre><p>###安装依赖包</p>
-<pre><code>$sudo npm install
-</code></pre><p>好了，至此，全部的安装工作已经完成了！！</p>
-<p>###生成静态页面</p>
-<p>首先，任意空白处右击调出git bash，cd到你的init目录（如：H:/dexo目录），执行如下命令，生成静态页面至hexo/public/目录中。</p>
-<pre><code>hexo generate (可简写 hexo g)
-</code></pre><p>###本地启动<br>启动本地服务，进行文章预览，命查看令：</p>
-<pre><code>hexo server （可简写hexo s）
-</code></pre><p>然后再打开浏览器，在地址栏中输入<a href="http://localhost:4000" title="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>进行预览</p>
-<p>这里可能需要注意一下，有的伙伴可能输入这个地址之后啥也看不到，有可能是因为4000这个端口被某些服务给占用了，我当时也遇到过这种情况，原因是与<em>福昕阅读器</em>冲突了，后来杀掉这个<em>福昕阅读器</em>的进程之后就可以了，当然我们也可以更改hexo的端口，命令如下：</p>
-<pre><code>hexo server -p 5000 （可简写hexo s -p 5000）
-</code></pre><p>然后到浏览器输入：<a href="http://localhost:5000" title="http://localhost:5000" target="_blank" rel="external">http://localhost:5000</a>再次预览查看。</p>
-<p>注：如果一切正常的话，大伙肯定是会看到久违的Hello World主界面的。</p>
-<p>ok，到这里，本地博客已经完全搭建起来了，但是，注意这里有个但是哦，这只是本地哦，现在的域名和服务器都是基于我们自己的电脑，其他的小伙伴是看不到你的这个Hello World主界面的。所以，我们需要部署到github上面去，与github进行关联。</p>
-<p>##关联GitHub</p>
-<p>###注册Github账号</p>
-<p>如果先前已有账号的可以直接跳过，还没有的，点击这里<a href="https://github.com/signup/free" title="https://github.com/signup/free" target="_blank" rel="external">https://github.com/signup/free</a>进行注册，注册流程很简单，和一般的账号注册没啥区别，这里就不赘述了。</p>
-<p>###创建repository仓库</p>
-<p>在自己的<a href="https://github.com" title="https://github.com" target="_blank" rel="external">Github</a>主页右下角，创建一个新的repository仓库。<br><img src="http://i.imgur.com/wN5rfoE.png" alt="http://i.imgur.com/wN5rfoE.png"></p>
-<p>比如我的<a href="https://github.com" title="https://github.com" target="_blank" rel="external">Github</a>账号是<a href="https://github.com/hu1991die" title="hu1991die" target="_blank" rel="external">hu1991die</a>,那么我创建的repository名字应该是<code>hu1991die.github.io</code>。注意，这个地方的命名需要注意一下，GitHubPage的名字必须<strong>用户名.github.com</strong>或者<strong>用户名.github.io</strong>。否则就变成了一个普通的项目了。<br><img src="http://i.imgur.com/N4jqwkO.png" alt="http://i.imgur.com/N4jqwkO.png"></p>
-<p>###部署博客</p>
-<p>编辑<code>_config.xml</code>（这个是hexo的核心配置文件，位于你的本地hexo博客目录下面，如H:\hexo下），在部署的时候，需要把下面的hu1991die替换成自己的github账号。</p>
-<pre><code>deploy:
-      type: git
-      repository: git@github.com:hu1991die/hu1991die.github.io.git
-      branch: master
-</code></pre><p>网上关于这个地方的type配置有些争议，不过据说官方最新版本的hexo中，这里的type要写成git，而不是github。</p>
-<p>接下来，再执行下列命令即可完成github部署。</p>
-<pre><code>hexo clean（可简写hexo cl，清理）
-
-hexo generate（可简写hexo g）
-
-hexo deploy（可简写hexo d）
-</code></pre><p>不过我一般都是这样的：</p>
-<pre><code>hexo cl &amp;&amp; hexo g &amp;&amp; hexo d &amp;&amp; hexo cl
-</code></pre><p><strong>注意：</strong>有些新用户需要设置SSH，否则上述命令会失败。ssh 的介绍和设置方法请看<a href="https://help.github.com/articles/generating-an-ssh-key/" title="https://help.github.com/articles/generating-an-ssh-key/" target="_blank" rel="external">官方教程</a>，不用担心，很简单。就是将本地的SSH公钥添加到github上面，主要是做一个校验用。</p>
-<p><strong>记住：</strong>每次修改本地文件后，需要<code>hexo generate</code>才能保存。每次使用命令时，都要在<code>D:\hexo</code>目录下。</p>
-<p>反正每次使用这行命令就行了</p>
-<pre><code>hexo cl &amp;&amp; hexo g &amp;&amp; hexo d &amp;&amp; hexo cl
-</code></pre><p>好了,到了这里。我们的博客已经完全搭建起来了，打开浏览器，在浏览器输入地址中hu1991die.github.io就能看到你的成就了！小伙伴们，赶快去体验一下吧！</p>
-<p>OK，下一篇将会给大伙儿介绍一下HEXO的目录结构以及一些常用命令，以及如何写文章和发表文章等等，敬请期待吧！！！</p>
 
       
     </div>
