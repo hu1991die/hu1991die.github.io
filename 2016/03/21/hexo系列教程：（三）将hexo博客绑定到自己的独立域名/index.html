@@ -4,18 +4,28 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>hexo系列教程：（二）hexo博客的目录结构与使用 | 鬼脚飞&#39;s Blog</title>
+  <title>hexo系列教程：（三）将hexo博客绑定到自己的独立域名 | 鬼脚飞&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="当你的才华还撑不起你的野心的时候，就该静下心来去学习！！！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo系列教程：（二）hexo博客的目录结构与使用">
-<meta property="og:url" content="http://yoursite.com/2016/03/07/hexo系列教程：（二）hexo博客的目录结构与使用/index.html">
+<meta property="og:title" content="hexo系列教程：（三）将hexo博客绑定到自己的独立域名">
+<meta property="og:url" content="http://yoursite.com/2016/03/21/hexo系列教程：（三）将hexo博客绑定到自己的独立域名/index.html">
 <meta property="og:site_name" content="鬼脚飞's Blog">
 <meta property="og:description" content="当你的才华还撑不起你的野心的时候，就该静下心来去学习！！！">
-<meta property="og:updated_time" content="2016-03-07T09:51:01.000Z">
+<meta property="og:image" content="http://i.imgur.com/q5X6Cmp.png">
+<meta property="og:image" content="http://i.imgur.com/ob7x7Va.png">
+<meta property="og:image" content="http://i.imgur.com/EKfpbrl.png">
+<meta property="og:image" content="http://i.imgur.com/pIvgOgm.png">
+<meta property="og:image" content="http://i.imgur.com/Jfk0MbR.png">
+<meta property="og:image" content="http://i.imgur.com/k9hfWFL.png">
+<meta property="og:image" content="http://i.imgur.com/BZ6ZTkC.png">
+<meta property="og:image" content="http://i.imgur.com/OG8sRwy.png">
+<meta property="og:image" content="http://i.imgur.com/gGiC3NY.png">
+<meta property="og:updated_time" content="2016-03-21T09:30:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo系列教程：（二）hexo博客的目录结构与使用">
+<meta name="twitter:title" content="hexo系列教程：（三）将hexo博客绑定到自己的独立域名">
 <meta name="twitter:description" content="当你的才华还撑不起你的野心的时候，就该静下心来去学习！！！">
+<meta name="twitter:image" content="http://i.imgur.com/q5X6Cmp.png">
   
     <link rel="alternative" href="/atom.xml" title="鬼脚飞&#39;s Blog" type="application/atom+xml">
   
@@ -197,11 +207,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-hexo系列教程：（二）hexo博客的目录结构与使用" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-hexo系列教程：（三）将hexo博客绑定到自己的独立域名" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/07/hexo系列教程：（二）hexo博客的目录结构与使用/" class="article-date">
-  	<time datetime="2016-03-07T08:37:43.000Z" itemprop="datePublished">2016-03-07</time>
+      <a href="/2016/03/21/hexo系列教程：（三）将hexo博客绑定到自己的独立域名/" class="article-date">
+  	<time datetime="2016-03-21T08:37:43.000Z" itemprop="datePublished">2016-03-21</time>
 </a>
     </div>
   
@@ -214,7 +224,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      hexo系列教程：（二）hexo博客的目录结构与使用
+      hexo系列教程：（三）将hexo博客绑定到自己的独立域名
     </h1>
   
 
@@ -238,78 +248,70 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="了解Hexo"><a href="#了解Hexo" class="headerlink" title="了解Hexo"></a>了解Hexo</h2><p>在上一篇文章中，我们只是使用Hexo简单地搭建了一个站点，但是要想更好地使用它，还是需要多了解关于Hexo的一些东西。</p>
-<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><p>Hexo的目录结构如下，其中：</p>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>通过前面两篇文章的学习，我们已经知道如何使用hexo+github Pages搭建一个属于自己的博客了，并且也大致地清楚了如何使用hexo发表文章了，但是此时我们的博客仍然是挂在github上面的，使用的是github pages提供的免费的域名空间，始终感觉还不是真正属于自己的，然后就一直想自己买一个域名，然后把这个博客绑定到自己的独立域名上，先前使用的还是github提供的域名，比如：<a href="hu1991die.github.io" title="hu1991die.github.io">hu1991die.github.io</a>,现在想使用自己独有的域名，那么该怎么办呢？</p>
+<h2 id="域名购买与DNS的选择"><a href="#域名购买与DNS的选择" class="headerlink" title="域名购买与DNS的选择"></a>域名购买与DNS的选择</h2><ul>
+<li>Goddady</li>
+<li>DNSPod</li>
+</ul>
+<p>域名的购买，首选Goddady，原因如下：</p>
 <ol>
-<li><p><code>_config.yml</code>是整个Hexo站点的核心配置文件</p>
+<li>在国外，不受国内各种干扰。</li>
+<li>国外域名商中唯一支持支付宝付款的。</li>
+<li>价格不高，还经常有优惠。</li>
+<li>信誉好，口碑好，靠谱。</li>
+<li>其实主要还是因为服务器比较稳定吧，其实github pages的空间也很稳定</li>
+</ol>
+<h3 id="goddady域名购买步骤："><a href="#goddady域名购买步骤：" class="headerlink" title="goddady域名购买步骤："></a>goddady域名购买步骤：</h3><ol>
+<li><p>首先打开<a href="https://sg.godaddy.com/zh/" title="godaddy" target="_blank" rel="external">goddady</a>官网</p>
 </li>
-<li><p><code>source/_drafts</code>是草稿文件目录</p>
-</li>
-<li><p><code>source/_posts</code>是发表的博文目录</p>
-</li>
-<li><p><code>themes</code>是下载的主题目录</p>
+<li><p>在搜索框里面查询你想要购买的域名</p>
 </li>
 </ol>
-<p>至于其他的目录暂时可以不用管。</p>
-<pre><code>.
-├── _config.yml
-├── package.json
-├── scaffolds
-├── scripts
-├── source
-|   ├── _drafts
-|   └── _posts
-└── themes
-</code></pre><p>首先就是修改<code>_config.yml</code>配置文件，主要就是配置一下自己的站点信息，配置文件中的注释比较详细，如果不懂的话可以看下官方文档，在预览状态下去改的话网页上能即时看到效果，这一点很赞，即时渲染。</p>
-<p>我的如下：</p>
-<pre><code>title: 鬼脚飞&apos;s Blog                    #网站标题
-subtitle: 没有梦想 何必远方！            #简介
-description: 没有梦想 何必远方！            #描述
-author: hu1991die                        #网站作者
-language: zh-CN                            #网站语言
-email: 347431996@qq.com                    #邮箱
-timezone: Asia/Hong_Kong                #时区
-</code></pre><p>默认的主题是<code>landscape</code>，更多的主题可以在<a href="https://github.com/hexojs/hexo/wiki/Themes" title="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">https://github.com/hexojs/hexo/wiki/Themes</a>这儿下载，基本就是<code>git clone</code>到<code>themes</code>目录下然后修改<code>_config.yml</code>中的<code>theme</code>字段即可，也十分简单方便。</p>
-<h3 id="例如：Yilia主题使用"><a href="#例如：Yilia主题使用" class="headerlink" title="例如：Yilia主题使用"></a>例如：Yilia主题使用</h3><h4 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h4><pre><code>$ git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia 
-</code></pre><h4 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h4><p>修改hexo根目录下的<code>_config.yml</code> ——》 <code>theme: yilia</code></p>
-<h4 id="更新主题（随意，想更新就更新）"><a href="#更新主题（随意，想更新就更新）" class="headerlink" title="更新主题（随意，想更新就更新）"></a>更新主题（随意，想更新就更新）</h4><pre><code>cd themes/yilia
-
-git pull 
-</code></pre><h4 id="Yilia主题效果展示"><a href="#Yilia主题效果展示" class="headerlink" title="Yilia主题效果展示"></a>Yilia主题效果展示</h4><p>详情见博客主页：<a href="http://hu1991die.com/" title="http://hu1991die.com/" target="_blank" rel="external">http://hu1991die.com/</a></p>
-<h2 id="Hexo常见指令"><a href="#Hexo常见指令" class="headerlink" title="Hexo常见指令"></a>Hexo常见指令</h2><p>Hexo的常用命令有以下几个：</p>
-<pre><code>$ hexo new [layout] &lt;title&gt;     #建立新文章，默认在_posts下，layout=&quot;draft&quot;时发布的是草稿
-$ hexo publish &lt;filename&gt;       #将_drafts下的文件放到_posts下，也就是发布草稿
-$ hexo generate                 #生成静态网页
-$ hexo server                   #启动预览服务器，开启-d选项时可以预览草稿
-$ hexo deploy                   #发布到远程服务器，开启--generate选项可以在deploy前自动generate
-</code></pre><h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><pre><code>$ hexo n  == hexo new
-$ hexo p  == hexo publish 
-$ hexo g  == hexo generate
-$ hexo s  == hexo server
-$ hexo d  == hexo deploy
-</code></pre><h2 id="写博文"><a href="#写博文" class="headerlink" title="写博文"></a>写博文</h2><p>好了，站点配置好了，该了解的也都了解了，现在我想发表一篇博文，怎么做呢？</p>
+<p><img src="http://i.imgur.com/q5X6Cmp.png" alt=""></p>
 <ol>
-<li><p>在hexo根目录下，执行命令</p>
-<p> <code>hexo　new &quot;my_first_post&quot;</code></p>
+<li>查询到合适的域名之后选择“选择”按钮，之后点击“进入购物车”；</li>
+</ol>
+<p><img src="http://i.imgur.com/ob7x7Va.png" alt=""></p>
+<ol>
+<li>之后，默认不用管。之后是确认购买，修改购买权限，默认情况下是两年，可以修改成，看自己情况。另外，还可以在网上搜索goddady优惠码，会有不同程度的优惠，当然如果你是土豪，可以无视。</li>
+</ol>
+<p><img src="http://i.imgur.com/EKfpbrl.png" alt=""></p>
+<ol>
+<li><p>之后就是结算，和一般网购没啥区别，自行摸索即可</p>
 </li>
-<li><p>在<code>H:\hexo\source\_posts</code>中打开这个文件（打开方式用“记事本”或者NotePad++即可），配置开头头部信息，如下所示是本文的头部信息，以<code>---</code>结尾。接下来，使用Markdown编辑文章就可以了。</p>
+<li><p>检查。结算后，重新登录，去「我的账户」，域名已经显示在你的账户了。（这里盗用一张图片）</p>
 </li>
 </ol>
-<p>############—<br>title: hexo系列教程：（二）hexo博客的目录结构与使用<br>layout: post<br>date: 2016-03-07 16:37:43<br>comments: true<br>categories: Blog<br>tags: [Hexo]<br>keywords: Hexo, Blog<br>description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。</p>
-<p>############—</p>
-<h2 id="发布博文"><a href="#发布博文" class="headerlink" title="发布博文"></a>发布博文</h2><p>由于生成的都是静态页面，可以和Octopress一样直接发布在gihub上。</p>
+<p><img src="http://i.imgur.com/pIvgOgm.png" alt=""></p>
 <ol>
-<li>使用命令<code>hexo s</code>，本地浏览器中访问<code>http://localhost:4000</code>预览效果。（退出server使用Ctrl + C）</li>
-<li>使用命令<code>hexo d</code>，同步到github。访问网站看看效果（使用github域名，一般都是博客仓库的名称）</li>
+<li>补充一些注意事项：</li>
 </ol>
-<h2 id="删除博文"><a href="#删除博文" class="headerlink" title="删除博文"></a>删除博文</h2><p>上面介绍了怎么写博文，如何发布博文，现在介绍一下如何删除博文，</p>
-<ol>
-<li>先删掉<code>source/_posts/</code>目录下的文章.md（md后缀结尾的）</li>
-<li>再删掉hexo根目录下面的<code>db.json</code>（记录数据库用的）</li>
-<li>执行<code>hexo cl &amp;&amp; hexo g &amp;&amp; hexo s</code>命令，先在本地浏览器中预览一下，浏览器中输入<code>http://localhost:4000</code>预览一下本地效果。</li>
-<li>如果没问题的话，则可以执行如下<code>hexo d</code>命令同步到github上</li>
-</ol>
-<p>好了，到了这里，我们已经学会了如何使用Hexo+Github Pages来搭建属于自己的博客，然后进行了一些基本配置，并且也学会了怎么发表博文。后面会陆续介绍一些高级点的个性化设置，比如使用多说的评论系统，绑定自己的独立域名等等，敬请期待哦！！！</p>
+<ul>
+<li>输入优惠码没有优惠或者优惠幅度较低，请清除浏览器 cookies 再尝试；</li>
+<li>如果没有支付宝支付选项，有可能是使用的优惠码不支持支付宝，请重新清除浏览器 cookies 再尝试；</li>
+<li>注册时用户填写信息时一定要输入正确的邮箱名字，否则修改十分麻烦。</li>
+<li>买完域名之后一定要记得去自己的邮箱查看激活邮件，否则域名激活不了。</li>
+</ul>
+<p>当然，网上也有很多资料比较推荐万网，我暂时没用过，域名购买完成后就要在Goddady网站里设置dns服务商了。Goddady会默认提供两个国外的，对于国内网站和国内访问来说，最好使用国内的dns服务商，这里选择口碑最好使用最多的免费dns服务商<a href="dnspod.cn" title="dnspod.cn">dnspod.cn</a>。</p>
+<p>其中，Goddady是域名服务商，DNSPod是DNS服务商。</p>
+<h3 id="DNS设置"><a href="#DNS设置" class="headerlink" title="DNS设置"></a>DNS设置</h3><p>推荐使用 DNSpod，快，免费，稳定。</p>
+<p>注册DNSpod，添加域名，如下图设置。</p>
+<p>总共需要添加两条记录：一条@记录与一条www记录</p>
+<p><img src="http://i.imgur.com/Jfk0MbR.png" alt=""></p>
+<p>说明：</p>
+<p>1、其中，@记录的记录类型是A类型，指向的IP地址（也就是记录值）是github Pages的提供的ip，可以在cmd中ping一下你的github仓库的地址，比如ping hu1991die.github.io。之后将ping到的IP地址填写到记录值列中。</p>
+<p>如博客不能登录，有可能是 github 更改了空间服务的 ip 地址，记得及时到在GitHub Pages查看最新的ip即可。</p>
+<p>2、www记录的记录类型是CNAME类型，指向的IP地址（也就是记录值）是你在 github 注册的仓库地址（如：hu1991die.github.io）。</p>
+<h3 id="去-Godaddy-修改-DNS-地址"><a href="#去-Godaddy-修改-DNS-地址" class="headerlink" title="去 Godaddy 修改 DNS 地址"></a>去 Godaddy 修改 DNS 地址</h3><p>更改 godaddy 的 Nameservers 为 DNSpod 的 NameServers。</p>
+<p><img src="http://i.imgur.com/k9hfWFL.png" alt=""></p>
+<p>1、点击「My Account」，管理我的域名。</p>
+<p><img src="http://i.imgur.com/BZ6ZTkC.png" alt=""></p>
+<p>2、点击域名。</p>
+<p><img src="http://i.imgur.com/OG8sRwy.png" alt=""></p>
+<p>3、将 godaddy 的 Nameservers 更改成 f1g1ns1.dnspod.net 和 f1g1ns2.dnspod.net</p>
+<p><img src="http://i.imgur.com/gGiC3NY.png" alt=""></p>
+<p>如有不详看可以看<a href="https://support.dnspod.cn/Kb/showarticle/tsid/42/" title="https://support.dnspod.cn/Kb/showarticle/tsid/42/" target="_blank" rel="external">DNSpod提供的官方帮助</a></p>
+<p>到此为止，绑定工作就已经结束了，之后在浏览器中输入自己购买的独立域名，如果以上步骤配置正确的话是可以看到你的博客主页的，如果有问题就按照上面的步骤自己慢慢折腾吧！学习就是不停的折腾，哈哈！！</p>
 
       
     </div>
@@ -319,18 +321,18 @@ $ hexo d  == hexo deploy
     
 <nav id="article-nav">
   
-    <a href="/2016/03/21/hexo系列教程：（三）将hexo博客绑定到自己的独立域名/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/03/21/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          hexo系列教程：（三）将hexo博客绑定到自己的独立域名
+          Hello World
         
       </div>
     </a>
   
   
-    <a href="/2016/03/04/hexo系列教程：（一）使用Hexo+GitHub Pages搭建个人博客/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">hexo系列教程：（一）使用Hexo+GitHub Pages搭建个人博客</div>
+    <a href="/2016/03/07/hexo系列教程：（二）hexo博客的目录结构与使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo系列教程：（二）hexo博客的目录结构与使用</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -365,7 +367,7 @@ $ hexo d  == hexo deploy
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hexo系列教程：（二）hexo博客的目录结构与使用" data-title="hexo系列教程：（二）hexo博客的目录结构与使用" data-url="http://yoursite.com/2016/03/07/hexo系列教程：（二）hexo博客的目录结构与使用/"></div>
+	<div class="ds-thread" data-thread-key="hexo系列教程：（三）将hexo博客绑定到自己的独立域名" data-title="hexo系列教程：（三）将hexo博客绑定到自己的独立域名" data-url="http://yoursite.com/2016/03/21/hexo系列教程：（三）将hexo博客绑定到自己的独立域名/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
