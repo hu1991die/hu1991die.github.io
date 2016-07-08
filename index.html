@@ -79,7 +79,7 @@
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -114,7 +114,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a>
+						<a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a>
 					</div>
 				</section>
 				
@@ -198,11 +198,11 @@
 
       <div class="body-wrap">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-如何开启tomcat远程调试功能？" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/21/hello-world/" class="article-date">
-  	<time datetime="2016-03-21T09:32:28.159Z" itemprop="datePublished">2016-03-21</time>
+      <a href="/2016/07/08/如何开启tomcat远程调试功能？/" class="article-date">
+  	<time datetime="2016-07-08T02:54:38.000Z" itemprop="datePublished">2016-07-08</time>
 </a>
     </div>
   
@@ -215,7 +215,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/21/hello-world/">Hello World</a>
+      <a class="article-title" href="/2016/07/08/如何开启tomcat远程调试功能？/">如何开启tomcat远程调试功能？</a>
     </h1>
   
 
@@ -224,15 +224,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>由于最近老是碰到那种在本地调试正常，一弄到服务器就出问题的奇葩情况，然后各种找原因，各种看代码死也找不到，只能通过各种打log的方式去一步一步排除追踪，然后重新打包部署，这样比较耗费时间，效率也不是很高。然而在我知道了java远程调试这个牛逼的功能之后，顿时觉得吊炸天啊。下面就简单介绍下如何开启tomcat的远程调试功能。</p>
+<p><strong>远程调试是个什么鬼：</strong></p>
+<blockquote>
+<p>服务端程序运行在一台远程服务器上，我们可以在本地服务端的代码（前提是本地的代码必须和远程服务器运行的代码一致）中设置断点，每当有请求到远程服务器时时能够在本地知道远程服务端的此时的内部状态。</p>
+</blockquote>
+<h2 id="1、Windows系统"><a href="#1、Windows系统" class="headerlink" title="1、Windows系统"></a>1、Windows系统</h2><p>首先到tomcat/bin/目录下找到 catalina.bat文件.然后在该文件中加入如下设置:</p>
+<pre><code>SET CATALINA_OPTS=-server -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5888
+</code></pre><h2 id="2、Linux系统"><a href="#2、Linux系统" class="headerlink" title="2、Linux系统"></a>2、Linux系统</h2><p>linux系统下，有一点点区别，要编辑catalina.sh文件，而且要改成这样：</p>
+<pre><code>CATALINA_OPTS=&quot;-server -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5888&quot; 
+</code></pre><p>也就是把SET去掉，后面加双引号引起来，因为在Linux下，是没有SET这个语法的。</p>
+<p>这是在tomcat启动时设置一些虚拟机参数，使服务器允许远程连接功能，address=5888表示远程连接的端口号，可以设置成任意其他不冲突端口</p>
+<h3 id="window查看端口冲突情况："><a href="#window查看端口冲突情况：" class="headerlink" title="window查看端口冲突情况："></a>window查看端口冲突情况：</h3><p>打开cmd，可以使用下列命令</p>
+<pre><code>netstat -aon|findstr 11211
+</code></pre><p><img src="http://i.imgur.com/E2aNOq8.png" alt=""></p>
+<h3 id="Linux查看端口冲突情况："><a href="#Linux查看端口冲突情况：" class="headerlink" title="Linux查看端口冲突情况："></a>Linux查看端口冲突情况：</h3><pre><code>netstat –anp | grep 8080
+</code></pre><p><img src="http://i.imgur.com/aij6eV9.png" alt=""></p>
+<p>备注：</p>
+<p>至于不管是Windows系统还是Linux系统，上面这段话的放置位置，<br>在clatalina.bat文件中找到 </p>
+<pre><code>rem-----Execute The Requested  Command ------------------
+</code></pre><p>这行代码，然后将上面的设置放到这行代码之前即可</p>
+<p><img src="http://i.imgur.com/zWdhMBE.png" alt=""></p>
+<p>最后重新启动一下服务器的tomcat,可以直接独立启动，需要注意的是我们本地的Eclipse中的tomcat可以不用启动。然后打开eclipse中的debug设置窗口，选择Remote Java Application ，新建一个debug项，输入服务器IP(如果是本机就输入localhost或127.0.0.1)和刚才设置端口号，点ok就可以进入debug状态了。</p>
+<p><img src="http://i.imgur.com/qbPuUNi.png" alt=""></p>
 
       
     </div>
@@ -240,7 +254,15 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li></ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Blog/">Blog</a>
+	</div>
+
 
       
       <div class="clearfix"></div>
@@ -605,6 +627,67 @@ hexo deploy（可简写hexo d）
 	<a class="article-category-link" href="/categories/Blog/">Blog</a>
 	</div>
 
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/03/hello-world/" class="article-date">
+  	<time datetime="2016-03-03T08:38:07.266Z" itemprop="datePublished">2016-03-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/03/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
 
       
       <div class="clearfix"></div>
