@@ -114,7 +114,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a>
+						<a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a>
 					</div>
 				</section>
 				
@@ -198,78 +198,6 @@
 
       <div class="body-wrap">
   
-    <article id="post-如何配置ngnix兼容PC与APP的分享功能" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/09/12/如何配置ngnix兼容PC与APP的分享功能/" class="article-date">
-  	<time datetime="2016-09-12T02:14:32.000Z" itemprop="datePublished">2016-09-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/12/如何配置ngnix兼容PC与APP的分享功能/">如何配置ngnix兼容PC与APP的分享功能？</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="目前我们的需求："><a href="#目前我们的需求：" class="headerlink" title="目前我们的需求："></a>目前我们的需求：</h2><p>在APP端对课程进行分享（分享到QQ、微信、朋友圈、微博、QQ空间），如果当前是在手机端进入QQ空间，点击该分享链接跳转的是手机端APP课程详情界面（已登录的情况，未登录则跳转到等界面）；如果当前是在PC端进入的QQ空间，点击该链接跳转的则是PC端课程详情界面（已登录的情况，未登录则跳转到登录界面）</p>
-<p>在PC端对课程进行分享（分享到微博、QQ空间），与上反之。</p>
-<p>原先商讨是将PC端的分享链接地址与APP端的分享链接地址统一，再由Nginx去判断客户端类型，进行不同的服务分发，之前商讨的是分享链接地址前缀统一成学员前端zsy-student-web，这样的话安卓和IOS两边都需要改，而且还需要在前端写死，感觉这样的话不是很灵活，因为我们APP这边还需要走适配器，也会有不同的环境，每个环境对应的地址不一样，每次都改的话对前端来说效率不是很高，所以决定前端暂时不动，仍旧是请求接口地址，分发操作还是交由Nginx来统一处理。</p>
-<p>这样的话，每次发版新环境的时候，nginx里面就需要注意一下了，我们需要在nginx.conf配置文件中的server下面配置两个location：</p>
-<p>这里暂时以TC预发布环境为例：</p>
-<h3 id="1、解析pc端分享链接地址"><a href="#1、解析pc端分享链接地址" class="headerlink" title="1、解析pc端分享链接地址"></a>1、解析pc端分享链接地址</h3><blockquote>
-<p>location /zxy-student-web/share {<br> alias /app/content/http/data/zxy-student-web/;<br> if ($http_user_agent ~ “^((.<em>MIDP.</em>)|(.<em>WAP.</em>)|(.<em>UP.Browser.</em>)|(.<em>Smartphone.</em>)|(.<em>Obigo.</em>)|(.<em>Mobile.</em>)|(.<em>AU.Browser.</em>)|(.<em>wxd.Mms.</em>)|(.<em>WxdB.Browser.</em>)|(.<em>CLDC.</em>)|(.<em>UP.Link.</em>)|(.<em>KM.Browser.</em>)|(.<em>UCWEB.</em>)|(.<em>SEMC-Browser.</em>)|(.<em>Mini.</em>)|(.<em>Symbian.</em>)|(.<em>Palm.</em>)|(.<em>Nokia.</em>)|(.<em>Panasonic.</em>)|(.<em>MOT-.</em>)|(.<em>SonyEricsson.</em>)|(.<em>NEC-.</em>)|(.<em>Alcatel.</em>)|(.<em>Ericsson.</em>)|(.<em>BENQ.</em>)|(.<em>BenQ.</em>)|(.<em>Amoisonic.</em>)|(.<em>Amoi-.</em>)|(.<em>Capitel.</em>)|(.<em>PHILIPS.</em>)|(.<em>SAMSUNG.</em>)|(.<em>Lenovo.</em>)|(.<em>Mitsu.</em>)|(.<em>Motorola.</em>)|(.<em>SHARP.</em>)|(.<em>WAPPER.</em>)|(.<em>LG-.</em>)|(.<em>LG/.</em>)|(.<em>EG900.</em>)|(.<em>CECT.</em>)|(.<em>Compal.</em>)|(.<em>kejian.</em>)|(.<em>Bird.</em>)|(.<em>BIRD.</em>)|(.<em>G900/V1.0.</em>)|(.<em>Arima.</em>)|(.<em>CTL.</em>)|(.<em>TDG.</em>)|(.<em>Daxian.</em>)|(.<em>DAXIAN.</em>)|(.<em>DBTEL.</em>)|(.<em>Eastcom.</em>)|(.<em>EASTCOM.</em>)|(.<em>PANTECH.</em>)|(.<em>Dopod.</em>)|(.<em>Haier.</em>)|(.<em>HAIER.</em>)|(.<em>KONKA.</em>)|(.<em>KEJIAN.</em>)|(.<em>LENOVO.</em>)|(.<em>Soutec.</em>)|(.<em>SOUTEC.</em>)|(.<em>SAGEM.</em>)|(.<em>SEC-.</em>)|(.<em>SED-.</em>)|(.<em>EMOL-.</em>)|(.<em>INNO55.</em>)|(.<em>ZTE.</em>)|(.<em>iPhone.</em>)|(.<em>Android.</em>)|(.<em>Windows CE.</em>)|(java.<em>)|(Opera.</em>))$” ){<br> rewrite ^ <a href="http://tc.zxy.com/zxy-mobile/share/index.html" target="_blank" rel="external">http://tc.zxy.com/zxy-mobile/share/index.html</a>;<br> }<br>}</p>
-</blockquote>
-<h3 id="2、解析app端分享链接"><a href="#2、解析app端分享链接" class="headerlink" title="2、解析app端分享链接"></a>2、解析app端分享链接</h3><blockquote>
-<p>location /zxy-mobile/share {<br> alias /app/zxy-mobile-tomcat/webapps/zxy-mobile/share;<br> if ($http_user_agent !~ “^((.<em>MIDP.</em>)|(.<em>WAP.</em>)|(.<em>UP.Browser.</em>)|(.<em>Smartphone.</em>)|(.<em>Obigo.</em>)|(.<em>Mobile.</em>)|(.<em>AU.Browser.</em>)|(.<em>wxd.Mms.</em>)|(.<em>WxdB.Browser.</em>)|(.<em>CLDC.</em>)|(.<em>UP.Link.</em>)|(.<em>KM.Browser.</em>)|(.<em>UCWEB.</em>)|(.<em>SEMC-Browser.</em>)|(.<em>Mini.</em>)|(.<em>Symbian.</em>)|(.<em>Palm.</em>)|(.<em>Nokia.</em>)|(.<em>Panasonic.</em>)|(.<em>MOT-.</em>)|(.<em>SonyEricsson.</em>)|(.<em>NEC-.</em>)|(.<em>Alcatel.</em>)|(.<em>Ericsson.</em>)|(.<em>BENQ.</em>)|(.<em>BenQ.</em>)|(.<em>Amoisonic.</em>)|(.<em>Amoi-.</em>)|(.<em>Capitel.</em>)|(.<em>PHILIPS.</em>)|(.<em>SAMSUNG.</em>)|(.<em>Lenovo.</em>)|(.<em>Mitsu.</em>)|(.<em>Motorola.</em>)|(.<em>SHARP.</em>)|(.<em>WAPPER.</em>)|(.<em>LG-.</em>)|(.<em>LG/.</em>)|(.<em>EG900.</em>)|(.<em>CECT.</em>)|(.<em>Compal.</em>)|(.<em>kejian.</em>)|(.<em>Bird.</em>)|(.<em>BIRD.</em>)|(.<em>G900/V1.0.</em>)|(.<em>Arima.</em>)|(.<em>CTL.</em>)|(.<em>TDG.</em>)|(.<em>Daxian.</em>)|(.<em>DAXIAN.</em>)|(.<em>DBTEL.</em>)|(.<em>Eastcom.</em>)|(.<em>EASTCOM.</em>)|(.<em>PANTECH.</em>)|(.<em>Dopod.</em>)|(.<em>Haier.</em>)|(.<em>HAIER.</em>)|(.<em>KONKA.</em>)|(.<em>KEJIAN.</em>)|(.<em>LENOVO.</em>)|(.<em>Soutec.</em>)|(.<em>SOUTEC.</em>)|(.<em>SAGEM.</em>)|(.<em>SEC-.</em>)|(.<em>SED-.</em>)|(.<em>EMOL-.</em>)|(.<em>INNO55.</em>)|(.<em>ZTE.</em>)|(.<em>iPhone.</em>)|(.<em>Android.</em>)|(.<em>Windows CE.</em>)|(java.<em>)|(Opera.</em>))$” ){<br> rewrite ^ <a href="http://tc.zxy.com/zxy-student-web/share/" target="_blank" rel="external">http://tc.zxy.com/zxy-student-web/share/</a>;<br> }<br>}</p>
-</blockquote>
-<p>以上就是配置的一些信息，有兴趣的可以自己去研究一下。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Blog/">Blog</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -313,89 +241,6 @@
       
       
       
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-如何开启tomcat远程调试功能？" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/08/如何开启tomcat远程调试功能？/" class="article-date">
-  	<time datetime="2016-07-08T02:54:38.000Z" itemprop="datePublished">2016-07-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/08/如何开启tomcat远程调试功能？/">如何开启tomcat远程调试功能？</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>由于最近老是碰到那种在本地调试正常，一弄到服务器就出问题的奇葩情况，然后各种找原因，各种看代码死也找不到，只能通过各种打log的方式去一步一步排除追踪，然后重新打包部署，这样比较耗费时间，效率也不是很高。然而在我知道了java远程调试这个牛逼的功能之后，顿时觉得吊炸天啊。下面就简单介绍下如何开启tomcat的远程调试功能。</p>
-<p><strong>远程调试是个什么鬼：</strong></p>
-<blockquote>
-<p>服务端程序运行在一台远程服务器上，我们可以在本地服务端的代码（前提是本地的代码必须和远程服务器运行的代码一致）中设置断点，每当有请求到远程服务器时时能够在本地知道远程服务端的此时的内部状态。</p>
-</blockquote>
-<h2 id="1、Windows系统"><a href="#1、Windows系统" class="headerlink" title="1、Windows系统"></a>1、Windows系统</h2><p>首先到tomcat/bin/目录下找到 catalina.bat文件.然后在该文件中加入如下设置:</p>
-<pre><code>SET CATALINA_OPTS=-server -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5888
-</code></pre><h2 id="2、Linux系统"><a href="#2、Linux系统" class="headerlink" title="2、Linux系统"></a>2、Linux系统</h2><p>linux系统下，有一点点区别，要编辑catalina.sh文件，而且要改成这样：</p>
-<pre><code>CATALINA_OPTS=&quot;-server -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5888&quot; 
-</code></pre><p>也就是把SET去掉，后面加双引号引起来，因为在Linux下，是没有SET这个语法的。</p>
-<p>这是在tomcat启动时设置一些虚拟机参数，使服务器允许远程连接功能，address=5888表示远程连接的端口号，可以设置成任意其他不冲突端口</p>
-<h3 id="window查看端口冲突情况："><a href="#window查看端口冲突情况：" class="headerlink" title="window查看端口冲突情况："></a>window查看端口冲突情况：</h3><p>打开cmd，可以使用下列命令</p>
-<pre><code>netstat -aon|findstr 11211
-</code></pre><p><img src="http://i.imgur.com/E2aNOq8.png" alt=""></p>
-<h3 id="Linux查看端口冲突情况："><a href="#Linux查看端口冲突情况：" class="headerlink" title="Linux查看端口冲突情况："></a>Linux查看端口冲突情况：</h3><pre><code>netstat –anp | grep 8080
-</code></pre><p><img src="http://i.imgur.com/aij6eV9.png" alt=""></p>
-<p>备注：</p>
-<p>至于不管是Windows系统还是Linux系统，上面这段话的放置位置，我们可以<br>在clatalina.bat文件中找到 </p>
-<pre><code>rem-----Execute The Requested  Command ------------------
-</code></pre><p>这行代码，然后将上面的设置放到这行代码之前即可</p>
-<p><img src="http://i.imgur.com/zWdhMBE.png" alt=""></p>
-<p>最后重新启动一下服务器的tomcat,可以直接独立启动，需要注意的是我们本地的Eclipse中的tomcat可以不用启动。然后打开eclipse中的debug设置窗口，选择Remote Java Application ，新建一个debug项，输入服务器IP(如果是本机就输入localhost或127.0.0.1)和刚才设置端口号，点ok就可以进入debug状态了。</p>
-<p><img src="http://i.imgur.com/qbPuUNi.png" alt=""></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Blog/">Blog</a>
-	</div>
-
 
       
       <div class="clearfix"></div>
