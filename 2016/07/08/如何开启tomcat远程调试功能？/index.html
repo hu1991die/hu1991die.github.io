@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://i.imgur.com/aij6eV9.png">
 <meta property="og:image" content="http://i.imgur.com/zWdhMBE.png">
 <meta property="og:image" content="http://i.imgur.com/qbPuUNi.png">
-<meta property="og:updated_time" content="2016-07-08T03:14:04.395Z">
+<meta property="og:updated_time" content="2016-09-12T03:14:18.905Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何开启tomcat远程调试功能？">
 <meta name="twitter:description" content="概述由于最近老是碰到那种在本地调试正常，一弄到服务器就出问题的奇葩情况，然后各种找原因，各种看代码死也找不到，只能通过各种打log的方式去一步一步排除追踪，然后重新打包部署，这样比较耗费时间，效率也不是很高。然而在我知道了java远程调试这个牛逼的功能之后，顿时觉得吊炸天啊。下面就简单介绍下如何开启tomcat的远程调试功能。
@@ -269,7 +269,7 @@
 <h3 id="Linux查看端口冲突情况："><a href="#Linux查看端口冲突情况：" class="headerlink" title="Linux查看端口冲突情况："></a>Linux查看端口冲突情况：</h3><pre><code>netstat –anp | grep 8080
 </code></pre><p><img src="http://i.imgur.com/aij6eV9.png" alt=""></p>
 <p>备注：</p>
-<p>至于不管是Windows系统还是Linux系统，上面这段话的放置位置，<br>在clatalina.bat文件中找到 </p>
+<p>至于不管是Windows系统还是Linux系统，上面这段话的放置位置，我们可以<br>在clatalina.bat文件中找到 </p>
 <pre><code>rem-----Execute The Requested  Command ------------------
 </code></pre><p>这行代码，然后将上面的设置放到这行代码之前即可</p>
 <p><img src="http://i.imgur.com/zWdhMBE.png" alt=""></p>
