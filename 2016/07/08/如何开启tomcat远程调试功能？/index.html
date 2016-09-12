@@ -4,18 +4,32 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>hexo系列教程：（二）hexo博客的目录结构与使用 | 鬼脚飞&#39;s Blog</title>
+  <title>如何开启tomcat远程调试功能？ | 鬼脚飞&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="当你的才华还撑不起你的野心的时候，就该静下心来去学习！！！">
+  <meta name="description" content="概述由于最近老是碰到那种在本地调试正常，一弄到服务器就出问题的奇葩情况，然后各种找原因，各种看代码死也找不到，只能通过各种打log的方式去一步一步排除追踪，然后重新打包部署，这样比较耗费时间，效率也不是很高。然而在我知道了java远程调试这个牛逼的功能之后，顿时觉得吊炸天啊。下面就简单介绍下如何开启tomcat的远程调试功能。
+远程调试是个什么鬼：
+
+服务端程序运行在一台远程服务器上，我们可以在本">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo系列教程：（二）hexo博客的目录结构与使用">
-<meta property="og:url" content="http://yoursite.com/2016/03/07/hexo系列教程：（二）hexo博客的目录结构与使用/index.html">
+<meta property="og:title" content="如何开启tomcat远程调试功能？">
+<meta property="og:url" content="http://yoursite.com/2016/07/08/如何开启tomcat远程调试功能？/index.html">
 <meta property="og:site_name" content="鬼脚飞's Blog">
-<meta property="og:description" content="当你的才华还撑不起你的野心的时候，就该静下心来去学习！！！">
-<meta property="og:updated_time" content="2016-03-07T09:51:01.050Z">
+<meta property="og:description" content="概述由于最近老是碰到那种在本地调试正常，一弄到服务器就出问题的奇葩情况，然后各种找原因，各种看代码死也找不到，只能通过各种打log的方式去一步一步排除追踪，然后重新打包部署，这样比较耗费时间，效率也不是很高。然而在我知道了java远程调试这个牛逼的功能之后，顿时觉得吊炸天啊。下面就简单介绍下如何开启tomcat的远程调试功能。
+远程调试是个什么鬼：
+
+服务端程序运行在一台远程服务器上，我们可以在本">
+<meta property="og:image" content="http://i.imgur.com/E2aNOq8.png">
+<meta property="og:image" content="http://i.imgur.com/aij6eV9.png">
+<meta property="og:image" content="http://i.imgur.com/zWdhMBE.png">
+<meta property="og:image" content="http://i.imgur.com/qbPuUNi.png">
+<meta property="og:updated_time" content="2016-09-12T03:14:18.905Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo系列教程：（二）hexo博客的目录结构与使用">
-<meta name="twitter:description" content="当你的才华还撑不起你的野心的时候，就该静下心来去学习！！！">
+<meta name="twitter:title" content="如何开启tomcat远程调试功能？">
+<meta name="twitter:description" content="概述由于最近老是碰到那种在本地调试正常，一弄到服务器就出问题的奇葩情况，然后各种找原因，各种看代码死也找不到，只能通过各种打log的方式去一步一步排除追踪，然后重新打包部署，这样比较耗费时间，效率也不是很高。然而在我知道了java远程调试这个牛逼的功能之后，顿时觉得吊炸天啊。下面就简单介绍下如何开启tomcat的远程调试功能。
+远程调试是个什么鬼：
+
+服务端程序运行在一台远程服务器上，我们可以在本">
+<meta name="twitter:image" content="http://i.imgur.com/E2aNOq8.png">
   
     <link rel="alternative" href="/atom.xml" title="鬼脚飞&#39;s Blog" type="application/atom+xml">
   
@@ -197,11 +211,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-hexo系列教程：（二）hexo博客的目录结构与使用" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-如何开启tomcat远程调试功能？" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/07/hexo系列教程：（二）hexo博客的目录结构与使用/" class="article-date">
-  	<time datetime="2016-03-07T08:37:43.000Z" itemprop="datePublished">2016-03-07</time>
+      <a href="/2016/07/08/如何开启tomcat远程调试功能？/" class="article-date">
+  	<time datetime="2016-07-08T02:54:38.000Z" itemprop="datePublished">2016-07-08</time>
 </a>
     </div>
   
@@ -214,7 +228,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      hexo系列教程：（二）hexo博客的目录结构与使用
+      如何开启tomcat远程调试功能？
     </h1>
   
 
@@ -223,7 +237,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li></ul>
 	</div>
 
         
@@ -238,78 +252,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="了解Hexo"><a href="#了解Hexo" class="headerlink" title="了解Hexo"></a>了解Hexo</h2><p>在上一篇文章中，我们只是使用Hexo简单地搭建了一个站点，但是要想更好地使用它，还是需要多了解关于Hexo的一些东西。</p>
-<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><p>Hexo的目录结构如下，其中：</p>
-<ol>
-<li><p><code>_config.yml</code>是整个Hexo站点的核心配置文件</p>
-</li>
-<li><p><code>source/_drafts</code>是草稿文件目录</p>
-</li>
-<li><p><code>source/_posts</code>是发表的博文目录</p>
-</li>
-<li><p><code>themes</code>是下载的主题目录</p>
-</li>
-</ol>
-<p>至于其他的目录暂时可以不用管。</p>
-<pre><code>.
-├── _config.yml
-├── package.json
-├── scaffolds
-├── scripts
-├── source
-|   ├── _drafts
-|   └── _posts
-└── themes
-</code></pre><p>首先就是修改<code>_config.yml</code>配置文件，主要就是配置一下自己的站点信息，配置文件中的注释比较详细，如果不懂的话可以看下官方文档，在预览状态下去改的话网页上能即时看到效果，这一点很赞，即时渲染。</p>
-<p>我的如下：</p>
-<pre><code>title: 鬼脚飞&apos;s Blog                    #网站标题
-subtitle: 没有梦想 何必远方！            #简介
-description: 没有梦想 何必远方！            #描述
-author: hu1991die                        #网站作者
-language: zh-CN                            #网站语言
-email: 347431996@qq.com                    #邮箱
-timezone: Asia/Hong_Kong                #时区
-</code></pre><p>默认的主题是<code>landscape</code>，更多的主题可以在<a href="https://github.com/hexojs/hexo/wiki/Themes" title="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">https://github.com/hexojs/hexo/wiki/Themes</a>这儿下载，基本就是<code>git clone</code>到<code>themes</code>目录下然后修改<code>_config.yml</code>中的<code>theme</code>字段即可，也十分简单方便。</p>
-<h3 id="例如：Yilia主题使用"><a href="#例如：Yilia主题使用" class="headerlink" title="例如：Yilia主题使用"></a>例如：Yilia主题使用</h3><h4 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h4><pre><code>$ git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia 
-</code></pre><h4 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h4><p>修改hexo根目录下的<code>_config.yml</code> ——》 <code>theme: yilia</code></p>
-<h4 id="更新主题（随意，想更新就更新）"><a href="#更新主题（随意，想更新就更新）" class="headerlink" title="更新主题（随意，想更新就更新）"></a>更新主题（随意，想更新就更新）</h4><pre><code>cd themes/yilia
-
-git pull 
-</code></pre><h4 id="Yilia主题效果展示"><a href="#Yilia主题效果展示" class="headerlink" title="Yilia主题效果展示"></a>Yilia主题效果展示</h4><p>详情见博客主页：<a href="http://hu1991die.com/" title="http://hu1991die.com/" target="_blank" rel="external">http://hu1991die.com/</a></p>
-<h2 id="Hexo常见指令"><a href="#Hexo常见指令" class="headerlink" title="Hexo常见指令"></a>Hexo常见指令</h2><p>Hexo的常用命令有以下几个：</p>
-<pre><code>$ hexo new [layout] &lt;title&gt;     #建立新文章，默认在_posts下，layout=&quot;draft&quot;时发布的是草稿
-$ hexo publish &lt;filename&gt;       #将_drafts下的文件放到_posts下，也就是发布草稿
-$ hexo generate                 #生成静态网页
-$ hexo server                   #启动预览服务器，开启-d选项时可以预览草稿
-$ hexo deploy                   #发布到远程服务器，开启--generate选项可以在deploy前自动generate
-</code></pre><h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><pre><code>$ hexo n  == hexo new
-$ hexo p  == hexo publish 
-$ hexo g  == hexo generate
-$ hexo s  == hexo server
-$ hexo d  == hexo deploy
-</code></pre><h2 id="写博文"><a href="#写博文" class="headerlink" title="写博文"></a>写博文</h2><p>好了，站点配置好了，该了解的也都了解了，现在我想发表一篇博文，怎么做呢？</p>
-<ol>
-<li><p>在hexo根目录下，执行命令</p>
-<p> <code>hexo　new &quot;my_first_post&quot;</code></p>
-</li>
-<li><p>在<code>H:\hexo\source\_posts</code>中打开这个文件（打开方式用“记事本”或者NotePad++即可），配置开头头部信息，如下所示是本文的头部信息，以<code>---</code>结尾。接下来，使用Markdown编辑文章就可以了。</p>
-</li>
-</ol>
-<p>############—<br>title: hexo系列教程：（二）hexo博客的目录结构与使用<br>layout: post<br>date: 2016-03-07 16:37:43<br>comments: true<br>categories: Blog<br>tags: [Hexo]<br>keywords: Hexo, Blog<br>description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。</p>
-<p>############—</p>
-<h2 id="发布博文"><a href="#发布博文" class="headerlink" title="发布博文"></a>发布博文</h2><p>由于生成的都是静态页面，可以和Octopress一样直接发布在gihub上。</p>
-<ol>
-<li>使用命令<code>hexo s</code>，本地浏览器中访问<code>http://localhost:4000</code>预览效果。（退出server使用Ctrl + C）</li>
-<li>使用命令<code>hexo d</code>，同步到github。访问网站看看效果（使用github域名，一般都是博客仓库的名称）</li>
-</ol>
-<h2 id="删除博文"><a href="#删除博文" class="headerlink" title="删除博文"></a>删除博文</h2><p>上面介绍了怎么写博文，如何发布博文，现在介绍一下如何删除博文，</p>
-<ol>
-<li>先删掉<code>source/_posts/</code>目录下的文章.md（md后缀结尾的）</li>
-<li>再删掉hexo根目录下面的<code>db.json</code>（记录数据库用的）</li>
-<li>执行<code>hexo cl &amp;&amp; hexo g &amp;&amp; hexo s</code>命令，先在本地浏览器中预览一下，浏览器中输入<code>http://localhost:4000</code>预览一下本地效果。</li>
-<li>如果没问题的话，则可以执行如下<code>hexo d</code>命令同步到github上</li>
-</ol>
-<p>好了，到了这里，我们已经学会了如何使用Hexo+Github Pages来搭建属于自己的博客，然后进行了一些基本配置，并且也学会了怎么发表博文。后面会陆续介绍一些高级点的个性化设置，比如使用多说的评论系统，绑定自己的独立域名等等，敬请期待哦！！！</p>
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>由于最近老是碰到那种在本地调试正常，一弄到服务器就出问题的奇葩情况，然后各种找原因，各种看代码死也找不到，只能通过各种打log的方式去一步一步排除追踪，然后重新打包部署，这样比较耗费时间，效率也不是很高。然而在我知道了java远程调试这个牛逼的功能之后，顿时觉得吊炸天啊。下面就简单介绍下如何开启tomcat的远程调试功能。</p>
+<p><strong>远程调试是个什么鬼：</strong></p>
+<blockquote>
+<p>服务端程序运行在一台远程服务器上，我们可以在本地服务端的代码（前提是本地的代码必须和远程服务器运行的代码一致）中设置断点，每当有请求到远程服务器时时能够在本地知道远程服务端的此时的内部状态。</p>
+</blockquote>
+<h2 id="1、Windows系统"><a href="#1、Windows系统" class="headerlink" title="1、Windows系统"></a>1、Windows系统</h2><p>首先到tomcat/bin/目录下找到 catalina.bat文件.然后在该文件中加入如下设置:</p>
+<pre><code>SET CATALINA_OPTS=-server -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5888
+</code></pre><h2 id="2、Linux系统"><a href="#2、Linux系统" class="headerlink" title="2、Linux系统"></a>2、Linux系统</h2><p>linux系统下，有一点点区别，要编辑catalina.sh文件，而且要改成这样：</p>
+<pre><code>CATALINA_OPTS=&quot;-server -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5888&quot; 
+</code></pre><p>也就是把SET去掉，后面加双引号引起来，因为在Linux下，是没有SET这个语法的。</p>
+<p>这是在tomcat启动时设置一些虚拟机参数，使服务器允许远程连接功能，address=5888表示远程连接的端口号，可以设置成任意其他不冲突端口</p>
+<h3 id="window查看端口冲突情况："><a href="#window查看端口冲突情况：" class="headerlink" title="window查看端口冲突情况："></a>window查看端口冲突情况：</h3><p>打开cmd，可以使用下列命令</p>
+<pre><code>netstat -aon|findstr 11211
+</code></pre><p><img src="http://i.imgur.com/E2aNOq8.png" alt=""></p>
+<h3 id="Linux查看端口冲突情况："><a href="#Linux查看端口冲突情况：" class="headerlink" title="Linux查看端口冲突情况："></a>Linux查看端口冲突情况：</h3><pre><code>netstat –anp | grep 8080
+</code></pre><p><img src="http://i.imgur.com/aij6eV9.png" alt=""></p>
+<p>备注：</p>
+<p>至于不管是Windows系统还是Linux系统，上面这段话的放置位置，我们可以<br>在clatalina.bat文件中找到 </p>
+<pre><code>rem-----Execute The Requested  Command ------------------
+</code></pre><p>这行代码，然后将上面的设置放到这行代码之前即可</p>
+<p><img src="http://i.imgur.com/zWdhMBE.png" alt=""></p>
+<p>最后重新启动一下服务器的tomcat,可以直接独立启动，需要注意的是我们本地的Eclipse中的tomcat可以不用启动。然后打开eclipse中的debug设置窗口，选择Remote Java Application ，新建一个debug项，输入服务器IP(如果是本机就输入localhost或127.0.0.1)和刚才设置端口号，点ok就可以进入debug状态了。</p>
+<p><img src="http://i.imgur.com/qbPuUNi.png" alt=""></p>
 
       
     </div>
@@ -319,18 +284,18 @@ $ hexo d  == hexo deploy
     
 <nav id="article-nav">
   
-    <a href="/2016/03/21/hexo系列教程：（三）将hexo博客绑定到自己的独立域名/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/07/08/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          hexo系列教程：（三）将hexo博客绑定到自己的独立域名
+          Hello World
         
       </div>
     </a>
   
   
-    <a href="/2016/03/04/hexo系列教程：（一）使用Hexo+GitHub Pages搭建个人博客/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">hexo系列教程：（一）使用Hexo+GitHub Pages搭建个人博客</div>
+    <a href="/2016/03/21/hexo系列教程：（三）将hexo博客绑定到自己的独立域名/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo系列教程：（三）将hexo博客绑定到自己的独立域名</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -365,7 +330,7 @@ $ hexo d  == hexo deploy
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hexo系列教程：（二）hexo博客的目录结构与使用" data-title="hexo系列教程：（二）hexo博客的目录结构与使用" data-url="http://yoursite.com/2016/03/07/hexo系列教程：（二）hexo博客的目录结构与使用/"></div>
+	<div class="ds-thread" data-thread-key="如何开启tomcat远程调试功能？" data-title="如何开启tomcat远程调试功能？" data-url="http://yoursite.com/2016/07/08/如何开启tomcat远程调试功能？/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
