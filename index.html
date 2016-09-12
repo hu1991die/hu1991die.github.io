@@ -114,7 +114,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a>
+						<a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a>
 					</div>
 				</section>
 				
@@ -197,6 +197,139 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-如何配置ngnix兼容PC与APP的分享功能" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/12/如何配置ngnix兼容PC与APP的分享功能/" class="article-date">
+  	<time datetime="2016-09-12T02:14:32.000Z" itemprop="datePublished">2016-09-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/12/如何配置ngnix兼容PC与APP的分享功能/">如何配置ngnix兼容PC与APP的分享功能？</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="目前我们的需求："><a href="#目前我们的需求：" class="headerlink" title="目前我们的需求："></a>目前我们的需求：</h2><p>在APP端对课程进行分享（分享到QQ、微信、朋友圈、微博、QQ空间），如果当前是在手机端进入QQ空间，点击该分享链接跳转的是手机端APP课程详情界面（已登录的情况，未登录则跳转到等界面）；如果当前是在PC端进入的QQ空间，点击该链接跳转的则是PC端课程详情界面（已登录的情况，未登录则跳转到登录界面）</p>
+<p>在PC端对课程进行分享（分享到微博、QQ空间），与上反之。</p>
+<p>原先商讨是将PC端的分享链接地址与APP端的分享链接地址统一，再由Nginx去判断客户端类型，进行不同的服务分发，之前商讨的是分享链接地址前缀统一成学员前端zsy-student-web，这样的话安卓和IOS两边都需要改，而且还需要在前端写死，感觉这样的话不是很灵活，因为我们APP这边还需要走适配器，也会有不同的环境，每个环境对应的地址不一样，每次都改的话对前端来说效率不是很高，所以决定前端暂时不动，仍旧是请求接口地址，分发操作还是交由Nginx来统一处理。</p>
+<p>这样的话，每次发版新环境的时候，nginx里面就需要注意一下了，我们需要在nginx.conf配置文件中的server下面配置两个location：</p>
+<p>这里暂时以TC预发布环境为例：</p>
+<h3 id="1、解析pc端分享链接地址"><a href="#1、解析pc端分享链接地址" class="headerlink" title="1、解析pc端分享链接地址"></a>1、解析pc端分享链接地址</h3><blockquote>
+<p>location /zxy-student-web/share {<br> alias /app/content/http/data/zxy-student-web/;<br> if ($http_user_agent ~ “^((.<em>MIDP.</em>)|(.<em>WAP.</em>)|(.<em>UP.Browser.</em>)|(.<em>Smartphone.</em>)|(.<em>Obigo.</em>)|(.<em>Mobile.</em>)|(.<em>AU.Browser.</em>)|(.<em>wxd.Mms.</em>)|(.<em>WxdB.Browser.</em>)|(.<em>CLDC.</em>)|(.<em>UP.Link.</em>)|(.<em>KM.Browser.</em>)|(.<em>UCWEB.</em>)|(.<em>SEMC-Browser.</em>)|(.<em>Mini.</em>)|(.<em>Symbian.</em>)|(.<em>Palm.</em>)|(.<em>Nokia.</em>)|(.<em>Panasonic.</em>)|(.<em>MOT-.</em>)|(.<em>SonyEricsson.</em>)|(.<em>NEC-.</em>)|(.<em>Alcatel.</em>)|(.<em>Ericsson.</em>)|(.<em>BENQ.</em>)|(.<em>BenQ.</em>)|(.<em>Amoisonic.</em>)|(.<em>Amoi-.</em>)|(.<em>Capitel.</em>)|(.<em>PHILIPS.</em>)|(.<em>SAMSUNG.</em>)|(.<em>Lenovo.</em>)|(.<em>Mitsu.</em>)|(.<em>Motorola.</em>)|(.<em>SHARP.</em>)|(.<em>WAPPER.</em>)|(.<em>LG-.</em>)|(.<em>LG/.</em>)|(.<em>EG900.</em>)|(.<em>CECT.</em>)|(.<em>Compal.</em>)|(.<em>kejian.</em>)|(.<em>Bird.</em>)|(.<em>BIRD.</em>)|(.<em>G900/V1.0.</em>)|(.<em>Arima.</em>)|(.<em>CTL.</em>)|(.<em>TDG.</em>)|(.<em>Daxian.</em>)|(.<em>DAXIAN.</em>)|(.<em>DBTEL.</em>)|(.<em>Eastcom.</em>)|(.<em>EASTCOM.</em>)|(.<em>PANTECH.</em>)|(.<em>Dopod.</em>)|(.<em>Haier.</em>)|(.<em>HAIER.</em>)|(.<em>KONKA.</em>)|(.<em>KEJIAN.</em>)|(.<em>LENOVO.</em>)|(.<em>Soutec.</em>)|(.<em>SOUTEC.</em>)|(.<em>SAGEM.</em>)|(.<em>SEC-.</em>)|(.<em>SED-.</em>)|(.<em>EMOL-.</em>)|(.<em>INNO55.</em>)|(.<em>ZTE.</em>)|(.<em>iPhone.</em>)|(.<em>Android.</em>)|(.<em>Windows CE.</em>)|(java.<em>)|(Opera.</em>))$” ){<br> rewrite ^ <a href="http://tc.zxy.com/zxy-mobile/share/index.html" target="_blank" rel="external">http://tc.zxy.com/zxy-mobile/share/index.html</a>;<br> }<br>}</p>
+</blockquote>
+<h3 id="2、解析app端分享链接"><a href="#2、解析app端分享链接" class="headerlink" title="2、解析app端分享链接"></a>2、解析app端分享链接</h3><blockquote>
+<p>location /zxy-mobile/share {<br> alias /app/zxy-mobile-tomcat/webapps/zxy-mobile/share;<br> if ($http_user_agent !~ “^((.<em>MIDP.</em>)|(.<em>WAP.</em>)|(.<em>UP.Browser.</em>)|(.<em>Smartphone.</em>)|(.<em>Obigo.</em>)|(.<em>Mobile.</em>)|(.<em>AU.Browser.</em>)|(.<em>wxd.Mms.</em>)|(.<em>WxdB.Browser.</em>)|(.<em>CLDC.</em>)|(.<em>UP.Link.</em>)|(.<em>KM.Browser.</em>)|(.<em>UCWEB.</em>)|(.<em>SEMC-Browser.</em>)|(.<em>Mini.</em>)|(.<em>Symbian.</em>)|(.<em>Palm.</em>)|(.<em>Nokia.</em>)|(.<em>Panasonic.</em>)|(.<em>MOT-.</em>)|(.<em>SonyEricsson.</em>)|(.<em>NEC-.</em>)|(.<em>Alcatel.</em>)|(.<em>Ericsson.</em>)|(.<em>BENQ.</em>)|(.<em>BenQ.</em>)|(.<em>Amoisonic.</em>)|(.<em>Amoi-.</em>)|(.<em>Capitel.</em>)|(.<em>PHILIPS.</em>)|(.<em>SAMSUNG.</em>)|(.<em>Lenovo.</em>)|(.<em>Mitsu.</em>)|(.<em>Motorola.</em>)|(.<em>SHARP.</em>)|(.<em>WAPPER.</em>)|(.<em>LG-.</em>)|(.<em>LG/.</em>)|(.<em>EG900.</em>)|(.<em>CECT.</em>)|(.<em>Compal.</em>)|(.<em>kejian.</em>)|(.<em>Bird.</em>)|(.<em>BIRD.</em>)|(.<em>G900/V1.0.</em>)|(.<em>Arima.</em>)|(.<em>CTL.</em>)|(.<em>TDG.</em>)|(.<em>Daxian.</em>)|(.<em>DAXIAN.</em>)|(.<em>DBTEL.</em>)|(.<em>Eastcom.</em>)|(.<em>EASTCOM.</em>)|(.<em>PANTECH.</em>)|(.<em>Dopod.</em>)|(.<em>Haier.</em>)|(.<em>HAIER.</em>)|(.<em>KONKA.</em>)|(.<em>KEJIAN.</em>)|(.<em>LENOVO.</em>)|(.<em>Soutec.</em>)|(.<em>SOUTEC.</em>)|(.<em>SAGEM.</em>)|(.<em>SEC-.</em>)|(.<em>SED-.</em>)|(.<em>EMOL-.</em>)|(.<em>INNO55.</em>)|(.<em>ZTE.</em>)|(.<em>iPhone.</em>)|(.<em>Android.</em>)|(.<em>Windows CE.</em>)|(java.<em>)|(Opera.</em>))$” ){<br> rewrite ^ <a href="http://tc.zxy.com/zxy-student-web/share/" target="_blank" rel="external">http://tc.zxy.com/zxy-student-web/share/</a>;<br> }<br>}</p>
+</blockquote>
+<p>以上就是配置的一些信息，有兴趣的可以自己去研究一下。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Blog/">Blog</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/08/hello-world/" class="article-date">
+  	<time datetime="2016-07-08T03:24:27.643Z" itemprop="datePublished">2016-07-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/08/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-如何开启tomcat远程调试功能？" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -627,67 +760,6 @@ hexo deploy（可简写hexo d）
 	<a class="article-category-link" href="/categories/Blog/">Blog</a>
 	</div>
 
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/03/hello-world/" class="article-date">
-  	<time datetime="2016-03-03T08:38:07.266Z" itemprop="datePublished">2016-03-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/03/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
 
       
       <div class="clearfix"></div>
