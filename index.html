@@ -114,7 +114,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a>
+						<a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a>
 					</div>
 				</section>
 				
@@ -197,6 +197,72 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-Java获取服务器的Mac地址" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/21/Java获取服务器的Mac地址/" class="article-date">
+  	<time datetime="2016-09-21T11:32:45.000Z" itemprop="datePublished">2016-09-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/21/Java获取服务器的Mac地址/">Java获取服务器的Mac地址</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在java中获取服务器（Linux或者Windows）的MAC地址，直接贴代码了：</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Desc</span><br><span class="line"> * @Author feizi</span><br><span class="line"> * @Date 2016/9/21 19:44</span><br><span class="line"> * @Package_name com.zxy.mobile.temptest.data</span><br><span class="line"> */</span><br><span class="line">public class TestGetMac &#123;</span><br><span class="line">    private static String getUnixMACAddress() &#123;</span><br><span class="line">        String mac = null;</span><br><span class="line">        BufferedReader bufferedReader = null;</span><br><span class="line">        Process process = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            process = Runtime.getRuntime().exec(&quot;ifconfig eth0&quot;);// linux下的命令，一般取eth0作为本地主网卡 显示信息中包含有mac地址信息</span><br><span class="line">            bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));</span><br><span class="line">            String line = null;</span><br><span class="line">            int index = -1;</span><br><span class="line">            while ((line = bufferedReader.readLine()) != null) &#123;</span><br><span class="line">                index = line.toLowerCase().indexOf(&quot;hwaddr&quot;);// 寻找标示字符串[hwaddr]</span><br><span class="line">                if (index &gt;= 0) &#123;// 找到了</span><br><span class="line">                    mac = line.substring(index + &quot;hwaddr&quot;.length() + 1).trim();// 取出mac地址并去除2边空格</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                if (bufferedReader != null) &#123;</span><br><span class="line">                    bufferedReader.close();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; catch (IOException e1) &#123;</span><br><span class="line">                e1.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            bufferedReader = null;</span><br><span class="line">            process = null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return mac.toUpperCase();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static String getWindowsAddress() &#123;</span><br><span class="line">        String mac = null;</span><br><span class="line">        BufferedReader bufferedReader = null;</span><br><span class="line">        Process process = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            process = Runtime.getRuntime().exec(&quot;ipconfig /all&quot;);// window下面通过ipconfig /all可以获取ip地址以及以太网信息和Mac地址</span><br><span class="line">            bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream(), &quot;GBK&quot;));</span><br><span class="line">            String line = null;</span><br><span class="line">            int index = -1;</span><br><span class="line"></span><br><span class="line">            String flagStr = &quot;物理地址. . . . . . . . . . . . . :&quot;;</span><br><span class="line">            while ((line = bufferedReader.readLine()) != null) &#123;</span><br><span class="line">                index = line.indexOf(flagStr);// 寻找标示字符串[物理地址]</span><br><span class="line">                if (index &gt;= 0) &#123;// 找到了</span><br><span class="line">                    mac = line.substring(index + flagStr.length() + 1).trim();// 取出mac地址并去除2边空格</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                if (bufferedReader != null) &#123;</span><br><span class="line">                    bufferedReader.close();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; catch (IOException e1) &#123;</span><br><span class="line">                e1.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            bufferedReader = null;</span><br><span class="line">            process = null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return mac.toUpperCase();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">//      String mac = getUnixMACAddress();</span><br><span class="line">        String mac = getWindowsAddress();</span><br><span class="line">        System.out.println(mac);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最终的运行结果如下：</p>
+<p><img src="http://i.imgur.com/zJJ4Bnm.jpg" alt=""></p>
+<p><img src="http://i.imgur.com/ErGil38.jpg" alt=""></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Blog/">Blog</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-git基础快速入门" class="article article-type-post" itemscope itemprop="blogPost">
   
