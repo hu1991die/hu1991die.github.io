@@ -4,28 +4,29 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>hexo系列教程：（三）将hexo博客绑定到自己的独立域名 | 鬼脚飞&#39;s Blog</title>
+  <title>如何安装memadmin可视化工具监视memcache | 鬼脚飞&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="当你的才华还撑不起你的野心的时候，就该静下心来去学习！！！">
+  <meta name="description" content="由于项目中使用了memcached，然后上线过程中出了一点问题，刷新了缓存，然后几个地方取出来的值就是不一样，还是以前的值，都不知道什么鬼，之后就想着看看memcached中存储的数据，但是呢，memcache本身就是一个服务器进程，默认是没有可视化的监控的，而且我们还不能动态的查看和修改memcache中存储的数据，这就会导致我们在使用memcache的过程中，经常一脸懵逼。然后就在网上各种查找">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo系列教程：（三）将hexo博客绑定到自己的独立域名">
-<meta property="og:url" content="http://yoursite.com/2016/03/21/hexo系列教程：（三）将hexo博客绑定到自己的独立域名/index.html">
+<meta property="og:title" content="如何安装memadmin可视化工具监视memcache">
+<meta property="og:url" content="http://yoursite.com/2016/12/16/如何安装memadmin可视化工具监视memcache/index.html">
 <meta property="og:site_name" content="鬼脚飞's Blog">
-<meta property="og:description" content="当你的才华还撑不起你的野心的时候，就该静下心来去学习！！！">
-<meta property="og:image" content="http://i.imgur.com/q5X6Cmp.png">
-<meta property="og:image" content="http://i.imgur.com/ob7x7Va.png">
-<meta property="og:image" content="http://i.imgur.com/EKfpbrl.png">
-<meta property="og:image" content="http://i.imgur.com/pIvgOgm.png">
-<meta property="og:image" content="http://i.imgur.com/Jfk0MbR.png">
-<meta property="og:image" content="http://i.imgur.com/k9hfWFL.png">
-<meta property="og:image" content="http://i.imgur.com/BZ6ZTkC.png">
-<meta property="og:image" content="http://i.imgur.com/OG8sRwy.png">
-<meta property="og:image" content="http://i.imgur.com/gGiC3NY.png">
-<meta property="og:updated_time" content="2016-03-21T09:30:34.742Z">
+<meta property="og:description" content="由于项目中使用了memcached，然后上线过程中出了一点问题，刷新了缓存，然后几个地方取出来的值就是不一样，还是以前的值，都不知道什么鬼，之后就想着看看memcached中存储的数据，但是呢，memcache本身就是一个服务器进程，默认是没有可视化的监控的，而且我们还不能动态的查看和修改memcache中存储的数据，这就会导致我们在使用memcache的过程中，经常一脸懵逼。然后就在网上各种查找">
+<meta property="og:image" content="http://i.imgur.com/mJQmMTQ.jpg">
+<meta property="og:image" content="http://i.imgur.com/fi8E0V6.jpg">
+<meta property="og:image" content="http://i.imgur.com/4ScxPiT.jpg">
+<meta property="og:image" content="http://i.imgur.com/K26GYqQ.jpg">
+<meta property="og:image" content="http://i.imgur.com/FnxcYze.jpg">
+<meta property="og:image" content="http://i.imgur.com/JEBzumn.jpg">
+<meta property="og:image" content="http://i.imgur.com/9hhftqu.jpg">
+<meta property="og:image" content="http://i.imgur.com/npotA2p.jpg">
+<meta property="og:image" content="http://i.imgur.com/2wYnHDN.jpg">
+<meta property="og:image" content="http://i.imgur.com/eYWkUvz.jpg">
+<meta property="og:updated_time" content="2016-12-16T12:22:11.624Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo系列教程：（三）将hexo博客绑定到自己的独立域名">
-<meta name="twitter:description" content="当你的才华还撑不起你的野心的时候，就该静下心来去学习！！！">
-<meta name="twitter:image" content="http://i.imgur.com/q5X6Cmp.png">
+<meta name="twitter:title" content="如何安装memadmin可视化工具监视memcache">
+<meta name="twitter:description" content="由于项目中使用了memcached，然后上线过程中出了一点问题，刷新了缓存，然后几个地方取出来的值就是不一样，还是以前的值，都不知道什么鬼，之后就想着看看memcached中存储的数据，但是呢，memcache本身就是一个服务器进程，默认是没有可视化的监控的，而且我们还不能动态的查看和修改memcache中存储的数据，这就会导致我们在使用memcache的过程中，经常一脸懵逼。然后就在网上各种查找">
+<meta name="twitter:image" content="http://i.imgur.com/mJQmMTQ.jpg">
   
     <link rel="alternative" href="/atom.xml" title="鬼脚飞&#39;s Blog" type="application/atom+xml">
   
@@ -207,11 +208,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-hexo系列教程：（三）将hexo博客绑定到自己的独立域名" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-如何安装memadmin可视化工具监视memcache" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/21/hexo系列教程：（三）将hexo博客绑定到自己的独立域名/" class="article-date">
-  	<time datetime="2016-03-21T08:37:43.000Z" itemprop="datePublished">2016-03-21</time>
+      <a href="/2016/12/16/如何安装memadmin可视化工具监视memcache/" class="article-date">
+  	<time datetime="2016-12-16T11:18:26.000Z" itemprop="datePublished">2016-12-16</time>
 </a>
     </div>
   
@@ -224,7 +225,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      hexo系列教程：（三）将hexo博客绑定到自己的独立域名
+      如何安装memadmin可视化工具监视memcache
     </h1>
   
 
@@ -233,7 +234,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/memadmin/">memadmin</a></li></ul>
 	</div>
 
         
@@ -248,70 +249,49 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>通过前面两篇文章的学习，我们已经知道如何使用hexo+github Pages搭建一个属于自己的博客了，并且也大致地清楚了如何使用hexo发表文章了，但是此时我们的博客仍然是挂在github上面的，使用的是github pages提供的免费的域名空间，始终感觉还不是真正属于自己的，然后就一直想自己买一个域名，然后把这个博客绑定到自己的独立域名上，先前使用的还是github提供的域名，比如：<a href="hu1991die.github.io" title="hu1991die.github.io">hu1991die.github.io</a>,现在想使用自己独有的域名，那么该怎么办呢？</p>
-<h2 id="域名购买与DNS的选择"><a href="#域名购买与DNS的选择" class="headerlink" title="域名购买与DNS的选择"></a>域名购买与DNS的选择</h2><ul>
-<li>Goddady</li>
-<li>DNSPod</li>
-</ul>
-<p>域名的购买，首选Goddady，原因如下：</p>
-<ol>
-<li>在国外，不受国内各种干扰。</li>
-<li>国外域名商中唯一支持支付宝付款的。</li>
-<li>价格不高，还经常有优惠。</li>
-<li>信誉好，口碑好，靠谱。</li>
-<li>其实主要还是因为服务器比较稳定吧，其实github pages的空间也很稳定</li>
-</ol>
-<h3 id="goddady域名购买步骤："><a href="#goddady域名购买步骤：" class="headerlink" title="goddady域名购买步骤："></a>goddady域名购买步骤：</h3><ol>
-<li><p>首先打开<a href="https://sg.godaddy.com/zh/" title="godaddy" target="_blank" rel="external">goddady</a>官网</p>
-</li>
-<li><p>在搜索框里面查询你想要购买的域名</p>
-</li>
-</ol>
-<p><img src="http://i.imgur.com/q5X6Cmp.png" alt=""></p>
-<ol>
-<li>查询到合适的域名之后选择“选择”按钮，之后点击“进入购物车”；</li>
-</ol>
-<p><img src="http://i.imgur.com/ob7x7Va.png" alt=""></p>
-<ol>
-<li>之后，默认不用管。之后是确认购买，修改购买权限，默认情况下是两年，可以修改成，看自己情况。另外，还可以在网上搜索goddady优惠码，会有不同程度的优惠，当然如果你是土豪，可以无视。</li>
-</ol>
-<p><img src="http://i.imgur.com/EKfpbrl.png" alt=""></p>
-<ol>
-<li><p>之后就是结算，和一般网购没啥区别，自行摸索即可</p>
-</li>
-<li><p>检查。结算后，重新登录，去「我的账户」，域名已经显示在你的账户了。（这里盗用一张图片）</p>
-</li>
-</ol>
-<p><img src="http://i.imgur.com/pIvgOgm.png" alt=""></p>
-<ol>
-<li>补充一些注意事项：</li>
-</ol>
-<ul>
-<li>输入优惠码没有优惠或者优惠幅度较低，请清除浏览器 cookies 再尝试；</li>
-<li>如果没有支付宝支付选项，有可能是使用的优惠码不支持支付宝，请重新清除浏览器 cookies 再尝试；</li>
-<li>注册时用户填写信息时一定要输入正确的邮箱名字，否则修改十分麻烦。</li>
-<li>买完域名之后一定要记得去自己的邮箱查看激活邮件，否则域名激活不了。</li>
-</ul>
-<p>当然，网上也有很多资料比较推荐万网，我暂时没用过，域名购买完成后就要在Goddady网站里设置dns服务商了。Goddady会默认提供两个国外的，对于国内网站和国内访问来说，最好使用国内的dns服务商，这里选择口碑最好使用最多的免费dns服务商<a href="dnspod.cn" title="dnspod.cn">dnspod.cn</a>。</p>
-<p>其中，Goddady是域名服务商，DNSPod是DNS服务商。</p>
-<h3 id="DNS设置"><a href="#DNS设置" class="headerlink" title="DNS设置"></a>DNS设置</h3><p>推荐使用 DNSpod，快，免费，稳定。</p>
-<p>注册DNSpod，添加域名，如下图设置。</p>
-<p>总共需要添加两条记录：一条@记录与一条www记录</p>
-<p><img src="http://i.imgur.com/Jfk0MbR.png" alt=""></p>
-<p>说明：</p>
-<p>1、其中，@记录的记录类型是A类型，指向的IP地址（也就是记录值）是github Pages的提供的ip，可以在cmd中ping一下你的github仓库的地址，比如ping hu1991die.github.io。之后将ping到的IP地址填写到记录值列中。</p>
-<p>如博客不能登录，有可能是 github 更改了空间服务的 ip 地址，记得及时到在GitHub Pages查看最新的ip即可。</p>
-<p>2、www记录的记录类型是CNAME类型，指向的IP地址（也就是记录值）是你在 github 注册的仓库地址（如：hu1991die.github.io）。</p>
-<h3 id="去-Godaddy-修改-DNS-地址"><a href="#去-Godaddy-修改-DNS-地址" class="headerlink" title="去 Godaddy 修改 DNS 地址"></a>去 Godaddy 修改 DNS 地址</h3><p>更改 godaddy 的 Nameservers 为 DNSpod 的 NameServers。</p>
-<p><img src="http://i.imgur.com/k9hfWFL.png" alt=""></p>
-<p>1、点击「My Account」，管理我的域名。</p>
-<p><img src="http://i.imgur.com/BZ6ZTkC.png" alt=""></p>
-<p>2、点击域名。</p>
-<p><img src="http://i.imgur.com/OG8sRwy.png" alt=""></p>
-<p>3、将 godaddy 的 Nameservers 更改成 f1g1ns1.dnspod.net 和 f1g1ns2.dnspod.net</p>
-<p><img src="http://i.imgur.com/gGiC3NY.png" alt=""></p>
-<p>如有不详看可以看<a href="https://support.dnspod.cn/Kb/showarticle/tsid/42/" title="https://support.dnspod.cn/Kb/showarticle/tsid/42/" target="_blank" rel="external">DNSpod提供的官方帮助</a></p>
-<p>到此为止，绑定工作就已经结束了，之后在浏览器中输入自己购买的独立域名，如果以上步骤配置正确的话是可以看到你的博客主页的，如果有问题就按照上面的步骤自己慢慢折腾吧！学习就是不停的折腾，哈哈！！</p>
+        <p>由于项目中使用了memcached，然后上线过程中出了一点问题，刷新了缓存，然后几个地方取出来的值就是不一样，还是以前的值，都不知道什么鬼，之后就想着看看memcached中存储的数据，但是呢，memcache本身就是一个服务器进程，默认是没有可视化的监控的，而且我们还不能动态的查看和修改memcache中存储的数据，这就会导致我们在使用memcache的过程中，经常一脸懵逼。然后就在网上各种查找，毕竟这样的需求还是挺广泛的，于是就搜到了使用memadmin这种工具可以对memcache进行可视化监控。经过了几番折腾，现记录一下过程，希望对后来人有所帮助。</p>
+<p>1、安装memcached</p>
+<p>关于memcached的安装网上有很多这方面的教程，这里就不做赘述了，</p>
+<p>推荐W3C菜鸟教程：</p>
+<p><a href="http://www.runoob.com/Memcached/window-install-memcached.html" title="http://www.runoob.com/Memcached/window-install-memcached.html" target="_blank" rel="external">http://www.runoob.com/Memcached/window-install-memcached.html</a></p>
+<p>2、安装php的运行环境——memadmin</p>
+<p>由于memadmin是由php语言开发的，本身是一个php程序，所以本地需要搭建相应的php运行环境才能跑起来，比如一些Apache服务器、Mysql、Php,这里为了方便，直接就安装wamp集成环境即可，版本：2.5 64</p>
+<p>关于wamp集成环境的安装包以及一些dll扩展文件我这边一起打包已经上传至csdn了，如有需要直接下载即可：</p>
+<p><a href="http://download.csdn.net/detail/hu1991die/9713622" title="http://download.csdn.net/detail/hu1991die/9713622" target="_blank" rel="external">http://download.csdn.net/detail/hu1991die/9713622</a></p>
+<p><img src="http://i.imgur.com/mJQmMTQ.jpg" alt=""></p>
+<p>然后下载下来之后，直接安装exe可执行文件，一路next即可。</p>
+<p>安装完毕，我们可以把Apache的httpd.conf的默认端口改一下，由80——》8088， 这样的话可以不必占用80端口了。</p>
+<p>Apache的httpd.conf文件的路径：</p>
+<blockquote>
+<p>D:\Program Files (x86)\wamp\bin\apache\apache2.4.9\conf\httpd.conf</p>
+</blockquote>
+<p><img src="http://i.imgur.com/fi8E0V6.jpg" alt=""></p>
+<p>安装成功之后，任务栏中是会出现一个wamp的logo图标的，然后打开localhost就可以看到管理界面了：</p>
+<p><img src="http://i.imgur.com/4ScxPiT.jpg" alt=""></p>
+<p>3、下载memadmin可执行程序</p>
+<p>下载安装完wamp集成环境之后，接下来还需要下载memadmin程序，网址：<a href="http://www.junopen.com/memadmin/" title="http://www.junopen.com/memadmin/" target="_blank" rel="external">http://www.junopen.com/memadmin/</a> ，下载完成之后我们将其放到wamp的www目录下。</p>
+<p><img src="http://i.imgur.com/K26GYqQ.jpg" alt=""></p>
+<p>4、安装memcache.dll扩展程序</p>
+<p>这一步比较坑爹，因为memcached的版本需要与php的版本进行对应，然后在网上下了各种版本，各种尝试，因为这里php使用的是5.5.12版本，所以对应的memcache.dll版本也需要配套对应，php_memcache.dll位于</p>
+<blockquote>
+<p>D:\softwares\memcached\WampServer\各种版本下的memcache dll\各种版本下的memcache dll\php 5.5\64位\php_memcache.dll</p>
+</blockquote>
+<p>我们找到这个dll文件之后，需要将其拷贝到</p>
+<blockquote>
+<p>D:\Program Files (x86)\wamp\bin\php\php5.5.12\ext</p>
+</blockquote>
+<p>这个文件夹目录下面</p>
+<p><img src="http://i.imgur.com/FnxcYze.jpg" alt=""></p>
+<p>最后在apache目录下的php.ini文件中加一下引用即可，如下图所示：</p>
+<p><img src="http://i.imgur.com/JEBzumn.jpg" alt=""></p>
+<p>好了，到这里，整个安装过程基本上就算已经结束了。最后，我们再修改一下memadmin的登录账户和密码，改成admin/amdin</p>
+<p><img src="http://i.imgur.com/9hhftqu.jpg" alt=""></p>
+<p>最后，大功告成！</p>
+<p><img src="http://i.imgur.com/npotA2p.jpg" alt=""></p>
+<p>感受一下可视化工具的强大:</p>
+<p><img src="http://i.imgur.com/2wYnHDN.jpg" alt=""></p>
+<p>这个是memadmin的管理界面，之后大伙儿就可自行熟悉一下啦。</p>
+<p><img src="http://i.imgur.com/eYWkUvz.jpg" alt=""></p>
 
       
     </div>
@@ -321,18 +301,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/07/08/如何开启tomcat远程调试功能？/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          如何开启tomcat远程调试功能？
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/03/07/hexo系列教程：（二）hexo博客的目录结构与使用/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">hexo系列教程：（二）hexo博客的目录结构与使用</div>
+    <a href="/2016/09/21/Java获取服务器的Mac地址/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java获取服务器的Mac地址</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -367,7 +338,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hexo系列教程：（三）将hexo博客绑定到自己的独立域名" data-title="hexo系列教程：（三）将hexo博客绑定到自己的独立域名" data-url="http://yoursite.com/2016/03/21/hexo系列教程：（三）将hexo博客绑定到自己的独立域名/"></div>
+	<div class="ds-thread" data-thread-key="如何安装memadmin可视化工具监视memcache" data-title="如何安装memadmin可视化工具监视memcache" data-url="http://yoursite.com/2016/12/16/如何安装memadmin可视化工具监视memcache/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

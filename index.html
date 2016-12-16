@@ -79,7 +79,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -114,7 +114,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a>
+						<a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/memadmin/" style="font-size: 10px;">memadmin</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a>
 					</div>
 				</section>
 				
@@ -197,6 +197,109 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-如何安装memadmin可视化工具监视memcache" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/16/如何安装memadmin可视化工具监视memcache/" class="article-date">
+  	<time datetime="2016-12-16T11:18:26.000Z" itemprop="datePublished">2016-12-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/16/如何安装memadmin可视化工具监视memcache/">如何安装memadmin可视化工具监视memcache</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由于项目中使用了memcached，然后上线过程中出了一点问题，刷新了缓存，然后几个地方取出来的值就是不一样，还是以前的值，都不知道什么鬼，之后就想着看看memcached中存储的数据，但是呢，memcache本身就是一个服务器进程，默认是没有可视化的监控的，而且我们还不能动态的查看和修改memcache中存储的数据，这就会导致我们在使用memcache的过程中，经常一脸懵逼。然后就在网上各种查找，毕竟这样的需求还是挺广泛的，于是就搜到了使用memadmin这种工具可以对memcache进行可视化监控。经过了几番折腾，现记录一下过程，希望对后来人有所帮助。</p>
+<p>1、安装memcached</p>
+<p>关于memcached的安装网上有很多这方面的教程，这里就不做赘述了，</p>
+<p>推荐W3C菜鸟教程：</p>
+<p><a href="http://www.runoob.com/Memcached/window-install-memcached.html" title="http://www.runoob.com/Memcached/window-install-memcached.html" target="_blank" rel="external">http://www.runoob.com/Memcached/window-install-memcached.html</a></p>
+<p>2、安装php的运行环境——memadmin</p>
+<p>由于memadmin是由php语言开发的，本身是一个php程序，所以本地需要搭建相应的php运行环境才能跑起来，比如一些Apache服务器、Mysql、Php,这里为了方便，直接就安装wamp集成环境即可，版本：2.5 64</p>
+<p>关于wamp集成环境的安装包以及一些dll扩展文件我这边一起打包已经上传至csdn了，如有需要直接下载即可：</p>
+<p><a href="http://download.csdn.net/detail/hu1991die/9713622" title="http://download.csdn.net/detail/hu1991die/9713622" target="_blank" rel="external">http://download.csdn.net/detail/hu1991die/9713622</a></p>
+<p><img src="http://i.imgur.com/mJQmMTQ.jpg" alt=""></p>
+<p>然后下载下来之后，直接安装exe可执行文件，一路next即可。</p>
+<p>安装完毕，我们可以把Apache的httpd.conf的默认端口改一下，由80——》8088， 这样的话可以不必占用80端口了。</p>
+<p>Apache的httpd.conf文件的路径：</p>
+<blockquote>
+<p>D:\Program Files (x86)\wamp\bin\apache\apache2.4.9\conf\httpd.conf</p>
+</blockquote>
+<p><img src="http://i.imgur.com/fi8E0V6.jpg" alt=""></p>
+<p>安装成功之后，任务栏中是会出现一个wamp的logo图标的，然后打开localhost就可以看到管理界面了：</p>
+<p><img src="http://i.imgur.com/4ScxPiT.jpg" alt=""></p>
+<p>3、下载memadmin可执行程序</p>
+<p>下载安装完wamp集成环境之后，接下来还需要下载memadmin程序，网址：<a href="http://www.junopen.com/memadmin/" title="http://www.junopen.com/memadmin/" target="_blank" rel="external">http://www.junopen.com/memadmin/</a> ，下载完成之后我们将其放到wamp的www目录下。</p>
+<p><img src="http://i.imgur.com/K26GYqQ.jpg" alt=""></p>
+<p>4、安装memcache.dll扩展程序</p>
+<p>这一步比较坑爹，因为memcached的版本需要与php的版本进行对应，然后在网上下了各种版本，各种尝试，因为这里php使用的是5.5.12版本，所以对应的memcache.dll版本也需要配套对应，php_memcache.dll位于</p>
+<blockquote>
+<p>D:\softwares\memcached\WampServer\各种版本下的memcache dll\各种版本下的memcache dll\php 5.5\64位\php_memcache.dll</p>
+</blockquote>
+<p>我们找到这个dll文件之后，需要将其拷贝到</p>
+<blockquote>
+<p>D:\Program Files (x86)\wamp\bin\php\php5.5.12\ext</p>
+</blockquote>
+<p>这个文件夹目录下面</p>
+<p><img src="http://i.imgur.com/FnxcYze.jpg" alt=""></p>
+<p>最后在apache目录下的php.ini文件中加一下引用即可，如下图所示：</p>
+<p><img src="http://i.imgur.com/JEBzumn.jpg" alt=""></p>
+<p>好了，到这里，整个安装过程基本上就算已经结束了。最后，我们再修改一下memadmin的登录账户和密码，改成admin/amdin</p>
+<p><img src="http://i.imgur.com/9hhftqu.jpg" alt=""></p>
+<p>最后，大功告成！</p>
+<p><img src="http://i.imgur.com/npotA2p.jpg" alt=""></p>
+<p>感受一下可视化工具的强大:</p>
+<p><img src="http://i.imgur.com/2wYnHDN.jpg" alt=""></p>
+<p>这个是memadmin的管理界面，之后大伙儿就可自行熟悉一下啦。</p>
+<p><img src="http://i.imgur.com/eYWkUvz.jpg" alt=""></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/memadmin/">memadmin</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Blog/">Blog</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Java获取服务器的Mac地址" class="article article-type-post" itemscope itemprop="blogPost">
   
